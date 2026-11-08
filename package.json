@@ -7,7 +7,8 @@
     "dev": "next dev",
     "build": "next build",
     "prepare-data": "python3 pipeline/prepare_site_data.py",
-    "test:engine": "python3 pipeline/test_ref.py"
+    "test:engine": "python3 pipeline/test_ref.py",
+    "seo:check": "node scripts/seo-check.mjs"
   },
   "dependencies": {
     "next": "16.4.5",
