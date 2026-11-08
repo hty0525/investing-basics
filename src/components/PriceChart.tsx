@@ -118,7 +118,7 @@ export default function PriceChart({ ticker, title, path, currency, from, to, ch
           {selected != null && daily != null ? <span className="mut">전일 대비 {daily >= 0 ? '+' : ''}{(daily * 100).toFixed(2)}%</span> : null}</div>
       </div>
       {view && series ? (
-        <svg ref={svg} className="price-chart-svg" viewBox={'0 0 ' + W + ' ' + H}
+        <svg ref={svg} className="price-chart-svg" viewBox={'0 0 ' + W + ' ' + H} preserveAspectRatio="none"
           role="img" tabIndex={0}
           aria-label={title + ', ' + series.d[view.start] + '부터 ' + series.d[view.last] + '까지 종가 그래프. 마우스나 터치, 좌우 방향키로 날짜별 가격 확인.'}
           onPointerMove={pointer} onPointerDown={pointer}
