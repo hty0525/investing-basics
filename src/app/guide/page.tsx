@@ -42,14 +42,22 @@ export default function Page() {
         <li><b>결과 읽기</b> — 납입원금 vs 평가액, 최악 손실 경험, 일시금 비교. “상세하게 보기”를 켜면 XIRR·거래 내역·분배금 합계가 추가돼요.</li>
         <li><b>저장</b> — CSV 버튼으로 내려받아 엑셀에서 확인할 수 있어요.</li>
       </ol>
-      <h2>4. 결과 화면의 용어 한 번에 보기</h2>
-      <div className="tbl"><table><thead><tr><th>표시</th><th>뜻</th></tr></thead><tbody>
-        <tr><th scope="row">납입금 대비 수익률</th><td>(평가액 − 넣은 돈) ÷ 넣은 돈. 연 수익률이 아님.</td></tr>
-        <tr><th scope="row">최악 손실 경험</th><td>적립하는 동안 넣은 돈보다 가장 많이 적었던 순간의 금액·비율.</td></tr>
-        <tr><th scope="row">최대낙폭(MDD)</th><td>ETF 가격이 고점에서 가장 많이 떨어졌던 비율. 내 계좌 손실과 다름.</td></tr>
-        <tr><th scope="row">원금 미달 구간</th><td>평가액이 누적 납입원금보다 낮았던 기간과 회복 시점.</td></tr>
-        <tr><th scope="row">XIRR</th><td>납입 시점을 반영한 연환산 수익률. 상세하게 보기에서 표시.</td></tr>
-        <tr><th scope="row">검증 대기 / 자료 부족</th><td>확인되지 않았거나 기간이 짧아 일부러 숨긴 값.</td></tr></tbody></table></div>
+      <h2>4. 어려운 말 ↔ 쉬운 말</h2>
+      <p>“그림으로/간단히”에서는 오른쪽 쉬운 말이 먼저 나오고, “상세히”에서는 왼쪽 정식 용어가 나옵니다.</p>
+      <div className="tbl"><table><thead><tr><th>정식 용어</th><th>쉬운 말</th><th>뜻</th></tr></thead><tbody>
+        <tr><th scope="row">납입원금</th><td>지금까지 넣은 돈</td><td>내가 실제로 넣은 금액의 합계.</td></tr>
+        <tr><th scope="row">평가액</th><td>지금 가치</td><td>지금 팔면 받을 수 있는 금액.</td></tr>
+        <tr><th scope="row">납입금 대비 수익률</th><td>넣은 돈 대비 번 비율</td><td>(지금 가치 − 넣은 돈) ÷ 넣은 돈. 1년 수익률이 아님.</td></tr>
+        <tr><th scope="row">최대낙폭(MDD)</th><td>가장 많이 떨어진 폭</td><td>가장 비쌌을 때 대비 가장 많이 떨어진 비율.</td></tr>
+        <tr><th scope="row">최악 손실 경험</th><td>가장 힘들었던 때</td><td>적립하는 동안 넣은 돈보다 가장 많이 적었던 순간.</td></tr>
+        <tr><th scope="row">원금 미달 / 회복</th><td>넣은 돈보다 적은 상태 / 되찾은 날</td><td>지금 가치가 넣은 돈 아래였던 기간과 그 끝.</td></tr>
+        <tr><th scope="row">XIRR</th><td>연 평균 수익률</td><td>돈을 넣은 시기를 반영해 1년 단위로 환산한 수익률.</td></tr>
+        <tr><th scope="row">분배금</th><td>배당금</td><td>ETF가 나눠 주는 돈(배당·이자 등).</td></tr>
+        <tr><th scope="row">가격수익률 / 총수익률</th><td>가격만 / 배당 더한 수익률</td><td>총수익률 = 배당금까지 다시 투자했다고 보고 계산.</td></tr>
+        <tr><th scope="row">환헤지(H)</th><td>환율 영향 줄이기</td><td>환율이 변해도 수익이 덜 흔들리게 만든 상품. 완전하진 않음.</td></tr>
+        <tr><th scope="row">총보수</th><td>해마다 빠지는 비용</td><td>ETF를 들고 있으면 자동으로 차감되는 연 비용.</td></tr>
+        <tr><th scope="row">듀레이션</th><td>금리에 얼마나 민감한가</td><td>클수록 금리 변화에 가격이 크게 흔들림.</td></tr>
+        <tr><th scope="row">검증 대기 / 자료 부족</th><td>아직 확인 못함 / 기간이 짧음</td><td>믿을 수 없는 값은 일부러 숨겼다는 표시.</td></tr></tbody></table></div>
       <h2>5. 모바일에서 쓰기</h2>
       <ul>
         <li>화면 아래 메뉴(홈·시뮬레이터·계산기·ETF·사용법)로 이동하세요. 더 많은 메뉴는 홈에서 찾을 수 있어요.</li>

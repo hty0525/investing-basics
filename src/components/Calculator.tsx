@@ -2,6 +2,7 @@
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import MoneyInput from './MoneyInput';
+import T from './T';
 import { useMode } from './ModeToggle';
 
 export type RollD = { min: number; median: number; max: number };
@@ -61,9 +62,9 @@ export default function Calculator({ refs }: { refs: RefRow[] }) {
 
       {tab === 'fv' ? (<>
         <div className="grid g4" style={{ marginTop: 14 }}>
-          <div className="kpi"><div className="l">납입원금</div><div className="v">{eok(r.principal)}</div></div>
-          <div className="kpi"><div className="l">예상 평가액 (가정 {rate}%)</div><div className="v">{eok(r.value)}</div></div>
-          <div className="kpi"><div className="l">수익금</div><div className={`v ${r.profit >= 0 ? 'good' : 'bad'}`}>{eok(r.profit)}</div></div>
+          <div className="kpi"><div className="l"><T e="넣은 돈" d="납입원금" /></div><div className="v">{eok(r.principal)}</div></div>
+          <div className="kpi"><div className="l"><T e="예상 가치" d="예상 평가액" /> (가정 {rate}%)</div><div className="v">{eok(r.value)}</div></div>
+          <div className="kpi"><div className="l"><T e="번 돈" d="수익금" /></div><div className={`v ${r.profit >= 0 ? 'good' : 'bad'}`}>{eok(r.profit)}</div></div>
           <div className="kpi detail-only"><div className="l">물가 반영 실질 가치</div><div className="v">{eok(r.real)}</div><div className="s">물가 {infl}% 가정</div></div>
         </div>
         <div className="card" style={{ marginTop: 14 }}>
@@ -76,7 +77,7 @@ export default function Calculator({ refs }: { refs: RefRow[] }) {
         <div className="card" style={{ marginTop: 14 }}>
           <h3>좋을 때도, 나쁠 때도 — 수익률 가정별 결과</h3>
           <p className="mut">숫자 하나가 예측처럼 읽히지 않도록 <b>마이너스 가정까지</b> 나란히 보여줍니다. 연 −20%는 극단적인 가정이지만 실제 시장에서 한 해에 그 정도 떨어진 ETF도 있습니다(최대낙폭 참고). (월 {won(monthly)} · {years}년 · 일시금 {won(lump)})</p>
-          <div className="tbl"><table><thead><tr><th>연 수익률 가정</th><th>예상 평가액</th><th>수익금</th><th className="detail-only">납입금 대비</th></tr></thead><tbody>
+          <div className="tbl"><table><thead><tr><th>연 수익률 가정</th><th><T e="예상 가치" d="예상 평가액" /></th><th><T e="번 돈" d="수익금" /></th><th className="detail-only">납입금 대비</th></tr></thead><tbody>
             {SC.map((a) => { const x = sim(lump, monthly, years, a / 100, cost / 100, infl / 100); return (<tr key={a}><th scope="row" className={a < 0 ? 'bad' : ''}>{a > 0 ? '+' : ''}{a}%{a < 0 ? ' (손실 가정)' : ''}</th><td>{eok(x.value)}</td><td className={x.profit >= 0 ? 'good' : 'bad'}>{eok(x.profit)}</td><td className="detail-only">{x.principal ? pc(x.profit / x.principal) : '-'}</td></tr>); })}</tbody></table></div>
         </div>
       </>) : (<>
@@ -96,8 +97,8 @@ export default function Calculator({ refs }: { refs: RefRow[] }) {
           <div className="kpi"><div className="l">상장 이후 연환산 ({ref?.sinceFrom}~)</div><div className="v">{ref?.since == null ? '자료 부족' : pc(ref.since)}</div></div>
           <div className="kpi"><div className="l">최근 5년 연환산</div><div className="v">{ref?.y5 == null ? '자료 부족' : pc(ref.y5)}</div></div>
         </div>
-        <h3 style={{ marginTop: 14 }}>월 적립 시작 시점별 연환산 수익률(XIRR) — 최악·중앙·최고</h3>
-        <div className="tbl"><table><thead><tr><th>적립 기간</th><th>최악 시작</th><th>중앙값</th><th>최고 시작</th></tr></thead><tbody>
+        <h3 style={{ marginTop: 14 }}><T e="언제 시작했느냐에 따라 달랐던 연 평균 수익률" d="월 적립 시작 시점별 연환산 수익률(XIRR) — 최악·중앙·최고" /></h3>
+        <div className="tbl"><table><thead><tr><th>적립 기간</th><th><T e="운 나쁜 시작" d="최악 시작" /></th><th><T e="가운데 값" d="중앙값" /></th><th><T e="운 좋은 시작" d="최고 시작" /></th></tr></thead><tbody>
           {[['3년', ref?.r3], ['5년', ref?.r5]].map(([n, d]) => { const x = d as RollD | null; return (<tr key={String(n)}><th scope="row">{String(n)}</th><td className={x && x.min < 0 ? 'bad' : ''}>{x ? pc(x.min) : '자료 부족'}</td><td>{x ? pc(x.median) : '자료 부족'}</td><td>{x ? pc(x.max) : '자료 부족'}</td></tr>); })}</tbody></table></div>
         <p className="mut">같은 ETF라도 <b>언제 시작했느냐</b>에 따라 이만큼 차이가 났습니다. 최악 시작 값이 마이너스면 그 시점에 시작한 사람은 실제로 손실을 봤다는 뜻입니다. 시작월이 겹치는 표본이라 독립 관측이 아닙니다.</p>
       </div>

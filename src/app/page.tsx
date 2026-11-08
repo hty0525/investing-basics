@@ -16,8 +16,8 @@ export default function Home() {
   return (
     <div className="prose">
       <h1>적립식 투자, 나에게 맞을까?</h1>
-      <p className="lead">어떤 ETF가 ‘정답’인지 말하지 않습니다. 같은 금액으로도 상품·시점·환율·분배금에 따라 결과가 어떻게 달랐는지 검증 가능한 과거 데이터로 보여줍니다.</p>
-      <Disclaimer />
+      <p className="lead visual-only">투자가 처음이어도 괜찮아요. 아래 그림을 <b>오른쪽으로 넘겨</b> 보세요.</p>
+      <p className="lead text-only">어떤 ETF가 ‘정답’인지 말하지 않습니다. 같은 금액으로도 상품·시점·환율·분배금에 따라 결과가 어떻게 달랐는지 검증 가능한 과거 데이터로 보여줍니다.</p>
       <section aria-labelledby="start" className="card" style={{ borderColor: '#2b5c93' }}>
         <h2 id="start" style={{ marginTop: 0 }}>처음이라면 이 순서로 보세요</h2>
         <div className="visual-only"><p>글이 많은 건 싫으시죠? <b>오른쪽으로 넘기면서</b> 그림으로 하나씩 익혀보세요. 한 장에 하나만 나와요.</p>
@@ -29,6 +29,7 @@ export default function Home() {
           <li><Link href="/simulator/"><b>직접 해보기: 시뮬레이터 → 가정 계산기</b></Link> <span className="mut">· 10분</span><div className="mut">과거 실제 데이터로, 그다음 내가 가정한 수익률로 계산해 보세요.</div></li></ol>
         <p style={{ marginBottom: 0 }} className="text-only"><Link className="btn" href="/concepts/dca/">1단계 시작하기 →</Link> <Link className="btn sec" href="/guide/">사이트 사용법</Link></p>
       </section>
+      <Disclaimer />
       <div className="banner" style={{ marginTop: 14 }}><b>이 사이트는 좋을 때만 보여주지 않습니다.</b> 모든 결과에 최대낙폭, 원금 미달 기간, 가장 운이 나빴던 시작 시점의 결과를 함께 표시합니다. <Link href="/rolling/">최악 사례 보기</Link></div>
       <div className="grid g3">
         <div className="card"><h3 className="good">좋은 점</h3>한 번에 매수할 시점을 정해야 하는 부담을 줄이고, 정기적으로 투자하기 쉽습니다. 하락 시 같은 금액으로 더 많은 수량을 사게 됩니다.</div>

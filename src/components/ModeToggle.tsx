@@ -3,9 +3,9 @@ import { useEffect, useState } from 'react';
 export type Mode = 'visual' | 'easy' | 'detail';
 const KEY = 'ib-mode';
 export function useMode(): Mode {
-  const [m, setM] = useState<Mode>('easy');
+  const [m, setM] = useState<Mode>('visual');
   useEffect(() => {
-    const read = () => setM((document.documentElement.dataset.mode as Mode) || 'easy');
+    const read = () => setM((document.documentElement.dataset.mode as Mode) || 'visual');
     read(); const o = new MutationObserver(read); o.observe(document.documentElement, { attributes: true, attributeFilter: ['data-mode'] });
     return () => o.disconnect();
   }, []);

@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import Engine from '@/lib/engine.js';
+import T from './T';
 import { useMode } from './ModeToggle';
 import MoneyInput from './MoneyInput';
 
@@ -127,12 +128,12 @@ export default function Simulator({ products }: { products: SimProduct[] }) {
         <div className="card" style={{ marginTop: 14 }}>
           <span className="tag hist">과거 데이터 기반 계산</span><span className="tag">세전</span><span className="tag">분배금 {res.o.reinvest ? '재투자' : '현금보유'}</span><span className="tag">{s.start} ~ {s.end}</span>
           <div className="grid g4" style={{ marginTop: 12 }}>
-            <div className="kpi"><div className="l">누적 납입원금</div><div className="v">{won(s.principal)}</div></div>
-            <div className="kpi"><div className="l">평가액</div><div className="v">{won(s.value)}</div></div>
-            <div className="kpi"><div className="l">손익</div><div className={`v ${s.profit >= 0 ? 'good' : 'bad'}`}>{won(s.profit)}</div></div>
-            <div className="kpi"><div className="l">납입금 대비 수익률</div><div className={`v ${s.ret >= 0 ? 'good' : 'bad'}`}>{pct(s.ret)}</div><div className="s">단순 누적 · XIRR과 다름</div></div>
-            <div className="kpi"><div className="l">최악 손실 경험(금액)</div><div className={`v ${s.worstLossAmt < 0 ? 'bad' : ''}`}>{won(s.worstLossAmt)}</div><div className="s">{s.worstLossAmt ? s.worstLossAmtDate : '원금 미달 없음'}</div></div>
-            <div className="kpi"><div className="l">최악 손실 경험(납입금 대비)</div><div className={`v ${s.worstLossPct < 0 ? 'bad' : ''}`}>{pct(s.worstLossPct)}</div><div className="s">{s.worstLossPct ? s.worstLossPctDate : ''}</div></div>
+            <div className="kpi"><div className="l"><T e="지금까지 넣은 돈" d="누적 납입원금" /></div><div className="v">{won(s.principal)}</div></div>
+            <div className="kpi"><div className="l"><T e="지금 가치" d="평가액" /></div><div className="v">{won(s.value)}</div></div>
+            <div className="kpi"><div className="l"><T e="번 돈(손익)" d="손익" /></div><div className={`v ${s.profit >= 0 ? 'good' : 'bad'}`}>{won(s.profit)}</div></div>
+            <div className="kpi"><div className="l"><T e="넣은 돈 대비 번 비율" d="납입금 대비 수익률" /></div><div className={`v ${s.ret >= 0 ? 'good' : 'bad'}`}>{pct(s.ret)}</div><div className="s">단순 누적 · XIRR과 다름</div></div>
+            <div className="kpi"><div className="l"><T e="가장 힘들었던 때(금액)" d="최악 손실 경험(금액)" /></div><div className={`v ${s.worstLossAmt < 0 ? 'bad' : ''}`}>{won(s.worstLossAmt)}</div><div className="s">{s.worstLossAmt ? s.worstLossAmtDate : '원금 미달 없음'}</div></div>
+            <div className="kpi"><div className="l"><T e="가장 힘들었던 때(비율)" d="최악 손실 경험(납입금 대비)" /></div><div className={`v ${s.worstLossPct < 0 ? 'bad' : ''}`}>{pct(s.worstLossPct)}</div><div className="s">{s.worstLossPct ? s.worstLossPctDate : ''}</div></div>
             {det ? (<>
               <div className="kpi"><div className="l">XIRR(연환산)</div><div className="v">{pct(s.xirr)}</div></div>
               <div className="kpi"><div className="l">분배금 합계(세전)</div><div className="v">{won(s.divTotal)}</div></div>
@@ -155,12 +156,12 @@ export default function Simulator({ products }: { products: SimProduct[] }) {
           <div className="mut" style={{ marginTop: 6 }}>B 상황에서는 시작일에 목돈이 없으므로 A는 현실적 대안이 아닌 참고치입니다.</div>
         </div>
         <div className="card" style={{ marginTop: 14 }}>
-          <h3>위험·회복 <span className="tag hist">과거 데이터 기반 계산</span></h3>
-          <div className="tbl"><table><thead><tr><th>ETF</th><th>가격 MDD(현지)</th><th>최고점→저점</th><th>최고가 회복</th>{det ? <><th>MDD(원화환산)</th><th>최악 월간</th><th>최악 12개월</th></> : null}</tr></thead><tbody>
+          <h3><T e="얼마나 떨어졌고 언제 회복했나" d="위험·회복" /> <span className="tag hist">과거 데이터 기반 계산</span></h3>
+          <div className="tbl"><table><thead><tr><th>ETF</th><th><T e="가장 많이 떨어진 폭" d="가격 MDD(현지)" /></th><th>고점 → 저점</th><th><T e="원래 가격 되찾은 날" d="최고가 회복" /></th>{det ? <><th>MDD(원화환산)</th><th>최악 월간</th><th>최악 12개월</th></> : null}</tr></thead><tbody>
             {res.r.etf.map((e: any) => (<tr key={e.k}><th scope="row">{byKey[e.k].label}</th><td className="bad">{pct(e.local.mdd)}</td><td>{e.local.peakDate} → {e.local.troughDate}</td><td>{e.local.recoveryDate ? `${e.local.recoveryDate} (저점 후 ${e.local.recoveryDays}일)` : '기간 내 미회복'}</td>
               {det ? <><td className="bad">{pct(e.krw.mdd)}</td><td>{e.monthly.worstMonth ? `${pct(e.monthly.worstMonth.r)} (${e.monthly.worstMonth.d.slice(0, 7)})` : '자료 부족'}</td><td>{e.monthly.worst12m ? `${pct(e.monthly.worst12m.r)} (~${e.monthly.worst12m.d.slice(0, 7)})` : '자료 부족(12개월 미만)'}</td></> : null}</tr>))}</tbody></table></div>
-          <h3 style={{ marginTop: 12 }}>내 적립식 계좌 — 원금 미달 구간</h3>
-          <div className="tbl"><table><thead><tr><th>미달 시작</th><th>해소(원금 회복)</th><th>지속(일)</th><th>구간 내 최악 손실</th></tr></thead><tbody>
+          <h3 style={{ marginTop: 12 }}><T e="내 계좌가 넣은 돈보다 적었던 기간" d="내 적립식 계좌 — 원금 미달 구간" /></h3>
+          <div className="tbl"><table><thead><tr><th><T e="넣은 돈보다 적어진 날" d="미달 시작" /></th><th><T e="넣은 돈 되찾은 날" d="해소(원금 회복)" /></th><th>지속(일)</th><th>구간 내 최악 손실</th></tr></thead><tbody>
             {s.underwater.length ? s.underwater.map((u: any, i: number) => (<tr key={i}><td>{u.start}</td><td>{u.end ?? '미해소'}</td><td>{Math.round(u.days)}</td><td>{won(u.worst)} ({pct(u.worstPct)})</td></tr>)) : <tr><td colSpan={4}>원금 미달 구간 없음</td></tr>}</tbody></table></div>
           <div className="mut">‘원금 회복’ = 평가액이 같은 시점까지의 누적 납입원금 이상이 된 첫 거래일. ETF MDD와 계좌 낙폭은 별개의 지표입니다.</div>
         </div>

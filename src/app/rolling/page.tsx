@@ -8,6 +8,7 @@ import Crumbs from '@/components/Crumbs';
 import Disclaimer from '@/components/Disclaimer';
 import Table from '@/components/Table';
 import Tag from '@/components/Tag';
+import T from '@/components/T';
 export const metadata = pageMeta({ title: '과거 롤링 결과 — 월 적립 N년, 최악의 시작 시점은 언제였나', description: 'ETF 41종을 가능한 모든 시작월부터 3·5·10년 적립했을 때의 실제 과거 결과 분포. 최악·25%·중앙값·최고 시작 결과와 종료 시 원금 미달 비율을 공개합니다. 예측이 아닙니다.', path: '/rolling/', keywords: ['적립식 최악', 'ETF 롤링 수익률', '적립식 손실 사례', '시작 시점 차이'] });
 export default function Page() {
   const all = CATS.flatMap((c) => [...c.us, ...c.kr]);
@@ -25,7 +26,7 @@ export default function Page() {
       {years.map((y) => (
         <section key={y}>
           <h2>{y}년 적립 결과</h2>
-          <div className="tbl"><table><caption>월 100만원 · {y}년 · 납입금 대비 수익률 · 정렬: 유형 순</caption><thead><tr><th>ETF</th><th>표본</th><th>최악 시작</th><th className="detail-only">25% 지점</th><th>중앙값</th><th className="detail-only">75% 지점</th><th>최고 시작</th><th>종료 시 원금 미달</th><th className="detail-only">적립 중 최악 손실(중앙값)</th></tr></thead><tbody>
+          <div className="tbl"><table><caption>월 100만원 · {y}년 · 납입금 대비 수익률 · 정렬: 유형 순</caption><thead><tr><th>ETF</th><th>표본</th><th><T e="운 나쁜 시작" d="최악 시작" /></th><th className="detail-only">25% 지점</th><th><T e="가운데 값" d="중앙값" /></th><th className="detail-only">75% 지점</th><th><T e="운 좋은 시작" d="최고 시작" /></th><th><T e="끝났을 때 넣은 돈보다 적었던 비율" d="종료 시 원금 미달" /></th><th className="detail-only">적립 중 최악 손실(중앙값)</th></tr></thead><tbody>
             {all.map((k) => { const w = rolling(k, [3, 5, 10]).find((r) => r.years === y); return w ? (
               <tr key={k}><th scope="row"><Link href={`/etf/${k.toLowerCase()}/`}>{label(k)}</Link></th><td>{w.n}개</td>
                 <td className={w.ret.min < 0 ? 'bad' : ''}>{pct(w.ret.min)} <span className="mut">({w.worstStart.d.slice(0, 7)})</span></td><td className="detail-only">{pct(w.ret.p25)}</td><td>{pct(w.ret.median)}</td><td className="detail-only">{pct(w.ret.p75)}</td>

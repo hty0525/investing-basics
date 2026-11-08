@@ -13,6 +13,7 @@ import Table from '@/components/Table';
 import Spark from '@/components/Spark';
 import FactTable from '@/components/FactTable';
 import Disclaimer from '@/components/Disclaimer';
+import T from '@/components/T';
 import { rolling } from '@/lib/rolling';
 
 export const dynamicParams = false;
@@ -69,19 +70,19 @@ export default async function EtfPage({ params }: { params: Promise<{ slug: stri
       <h2>가격 추이</h2>
       <Spark k={k} title={`${label(k)} 가격 추이`} />
       <p className="mut">최근 종가 {lp.c.toLocaleString('ko-KR')} {p.currency} ({lp.d}) · 거래일 {ser.d.length.toLocaleString('ko-KR')}일 · 분할 반영 종가(분배금 별도 처리).</p>
-      <h2>기간별 수익률과 낙폭</h2>
+      <h2><T e="기간별로 얼마나 올랐나" d="기간별 수익률과 낙폭" /></h2>
       <Table head={['기간', '가격수익률', '총수익률(분배 재투자)', '기간 내 최대낙폭']} rows={rows} caption={`${p.currency} 기준, 세전. 총수익률은 배당락일 종가에 분배금을 재투자한 가정.`} />
       {skipped.length ? <p className="mut">상장 이후 기간이 짧아 {skipped.join(', ')} 수익률은 <Tag kind="wait">자료 부족</Tag>으로 표시하지 않습니다.</p> : null}
-      <h2>위험과 회복</h2>
+      <h2><T e="얼마나 떨어졌고 언제 회복했나" d="위험과 회복" /></h2>
       <div className="grid g4">
-        <div className="kpi"><div className="l">최대낙폭(가격, {p.currency})</div><div className="v bad">{pct(st.all.mdd.mdd)}</div><div className="s">{st.all.mdd.peakDate} → {st.all.mdd.troughDate}</div></div>
-        <div className="kpi"><div className="l">최고가 회복</div><div className="v">{st.all.mdd.recoveryDate ?? '기간 내 미회복'}</div><div className="s">{st.all.mdd.recoveryDays ? `저점 후 ${st.all.mdd.recoveryDays}일` : ''}</div></div>
+        <div className="kpi"><div className="l"><T e="가장 많이 떨어진 폭" d={`최대낙폭(가격, ${p.currency})`} /></div><div className="v bad">{pct(st.all.mdd.mdd)}</div><div className="s">{st.all.mdd.peakDate} → {st.all.mdd.troughDate}</div></div>
+        <div className="kpi"><div className="l"><T e="원래 가격 되찾은 날" d="최고가 회복" /></div><div className="v">{st.all.mdd.recoveryDate ?? '기간 내 미회복'}</div><div className="s">{st.all.mdd.recoveryDays ? `저점 후 ${st.all.mdd.recoveryDays}일` : ''}</div></div>
         <div className="kpi detail-only"><div className="l">연환산 변동성</div><div className="v">{pct(st.vol)}</div><div className="s">일간 로그수익률 기준</div></div>
         <div className="kpi detail-only"><div className="l">원화 환산 최대낙폭</div><div className="v bad">{st.krwMdd ? pct(st.krwMdd.mdd) : '자료 부족'}</div><div className="s">{st.krwMdd ? `${st.krwStart}~ 기준` : ''}</div></div>
       </div>
       {st.month ? <p className="mut detail-only">원화 기준 최악 월간 수익률 {st.month.worstMonth ? `${pct(st.month.worstMonth.r)} (${st.month.worstMonth.d.slice(0, 7)})` : '자료 부족'} · 최악 12개월 {st.month.worst12m ? `${pct(st.month.worst12m.r)} (~${st.month.worst12m.d.slice(0, 7)})` : '자료 부족'}</p> : null}
       <p className="mut">과거 최대낙폭이 미래에 가능한 최대 손실 한도를 뜻하지는 않습니다. 적립식 계좌 기준 원금 미달·회복은 <Link href="/simulator/">시뮬레이터</Link>에서 계산하세요.</p>
-      <h2>분배금</h2>
+      <h2><T e="배당금" d="분배금" /></h2>
       {p.div_status === 'none' ? <p>데이터상 분배 기록이 없습니다.</p> : (
         <>
           <p>데이터상 분배 {p.divCount}건. 정합성 검사: {p.div_status === 'ok' ? '가격 변동과 일치(통과)' : <Tag kind="bad">불일치 검토 필요 — 총수익률 숨김</Tag>}</p>
