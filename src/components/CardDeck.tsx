@@ -29,7 +29,7 @@ export default function CardDeck({ cards, endLinks, label }: { cards: DeckCard[]
   const go = (d: number) => { const el = ref.current; if (!el) return; const t = Math.max(0, Math.min(total - 1, idx + d)); const c = el.children[t] as HTMLElement; el.scrollTo({ left: c.offsetLeft, behavior: 'smooth' }); };
   return (
     <section className="deck" aria-roledescription="carousel" aria-label={label}>
-      <div className="deckbar"><div className="dots" aria-hidden="true">{Array.from({ length: total }).map((_, i) => <i key={i} className={i === idx ? 'on' : ''} />)}</div><span className="mut">{idx + 1} / {total}</span></div>
+      <div className="deckbar"><div className="dots" aria-hidden="true">{Array.from({ length: total }).map((_, i) => <i key={i} className={i === idx ? 'on' : ''} />)}</div><span className="mut">{idx + 1} / {total}</span><button className="btn sec" style={{ padding: '4px 10px', fontSize: 12 }} onClick={() => { document.documentElement.dataset.mode = 'easy'; try { localStorage.setItem('ib-mode', 'easy'); } catch { /* ignore */ } }}>글로 한 번에 보기</button></div>
       <div className="track" ref={ref} tabIndex={0} onKeyDown={(e) => { if (e.key === 'ArrowRight') { e.preventDefault(); go(1); } if (e.key === 'ArrowLeft') { e.preventDefault(); go(-1); } }}>
         {cards.map((c, i) => (
           <article className="slide" key={i} aria-label={`${i + 1}/${total} ${c.title}`}>

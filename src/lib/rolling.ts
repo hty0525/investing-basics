@@ -4,7 +4,7 @@ import { FX_START } from './stats';
 
 export type Dist = { min: number; p25: number; median: number; p75: number; max: number };
 export type RollWin = {
-  years: number; n: number; firstStart: string; lastStart: string;
+  years: number; noDiv: boolean; n: number; firstStart: string; lastStart: string;
   ret: Dist; xirr: Dist | null; worstLoss: Dist; belowShare: number; endBelow: number;
   worstStart: { d: string; ret: number }; bestStart: { d: string; ret: number };
 };
@@ -33,7 +33,7 @@ export function rolling(k: string, windows = [3, 5, 10]): RollWin[] {
     }
     if (cnt < 12) continue; // 표본이 12개월 미만이면 표시하지 않음 (자료 부족)
     const iw = rets.indexOf(Math.min(...rets)), ib = rets.indexOf(Math.max(...rets));
-    out.push({ years: y, n: cnt, firstStart: starts[0], lastStart: starts[starts.length - 1], ret: dist(rets), xirr: xs.length ? dist(xs) : null, worstLoss: dist(worst), belowShare: below / cnt, endBelow: endBelow / cnt, worstStart: { d: starts[iw], ret: rets[iw] }, bestStart: { d: starts[ib], ret: rets[ib] } });
+    out.push({ years: y, noDiv: m.div_status === 'review', n: cnt, firstStart: starts[0], lastStart: starts[starts.length - 1], ret: dist(rets), xirr: xs.length ? dist(xs) : null, worstLoss: dist(worst), belowShare: below / cnt, endBelow: endBelow / cnt, worstStart: { d: starts[iw], ret: rets[iw] }, bestStart: { d: starts[ib], ret: rets[ib] } });
   }
   return (memo[k] = out);
 }

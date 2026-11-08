@@ -39,6 +39,6 @@ export function loadFx() {
 /** 엔진용 데이터 객체 (빌드 시) */
 export function engineData(keys: string[]) {
   const products: Record<string, unknown> = {};
-  keys.forEach((k) => { const s = loadSeries(k); const m = P(k); products[k] = { ...s, currency: m.currency, first: m.first, last: m.last, kind: m.kind }; });
+  keys.forEach((k) => { const s = loadSeries(k); const m = P(k); products[k] = { ...s, div: m.div_status === 'review' ? {} : s.div, currency: m.currency, first: m.first, last: m.last, kind: m.kind }; });
   return { products, fx: loadFx() };
 }

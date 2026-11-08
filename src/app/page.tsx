@@ -16,6 +16,11 @@ export default function Home() {
   return (
     <div className="prose">
       <h1>적립식 투자, 나에게 맞을까?</h1>
+      <nav aria-label="바로 시작하기" className="actions">
+        <a className="action" href="#start"><span aria-hidden="true">🎓</span><div><b>투자 처음 배우기</b><small>그림으로 하나씩, 10장</small></div></a>
+        <Link className="action" href="/etf/"><span aria-hidden="true">🔍</span><div><b>ETF 비교하기</b><small>티커로 검색 · 유형별 비교</small></div></Link>
+        <Link className="action" href="/simulator/"><span aria-hidden="true">🧮</span><div><b>투자 결과 계산하기</b><small>매달 넣었다면? 과거 결과</small></div></Link>
+      </nav>
       <p className="lead visual-only">투자가 처음이어도 괜찮아요. 아래 그림을 <b>오른쪽으로 넘겨</b> 보세요.</p>
       <p className="lead text-only">어떤 ETF가 ‘정답’인지 말하지 않습니다. 같은 금액으로도 상품·시점·환율·분배금에 따라 결과가 어떻게 달랐는지 검증 가능한 과거 데이터로 보여줍니다.</p>
       <section aria-labelledby="start" className="card" style={{ borderColor: '#2b5c93' }}>

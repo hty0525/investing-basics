@@ -33,7 +33,7 @@ export default function Simulator({ products }: { products: SimProduct[] }) {
   const [slots, setSlots] = useState<Slot[]>([{ k: 'VOO', w: 100 }, { k: '', w: 0 }, { k: '', w: 0 }]);
   const [monthly, setMonthly] = useState(1000000), [lump, setLump] = useState(0);
   const [reinvest, setReinvest] = useState('1'), [fee, setFee] = useState(0), [spread, setSpread] = useState(0);
-  const [start, setStart] = useState(''), [end, setEnd] = useState('');
+  const [start, setStart] = useState(''), [end, setEnd] = useState(''); const [period, setPeriod] = useState('5'), [custom, setCustom] = useState(false);
   const [acct, setAcct] = useState('g'), [ccy, setCcy] = useState('krw');
   const [msg, setMsg] = useState(''), [busy, setBusy] = useState(false);
   const [res, setRes] = useState<any>(null);
@@ -43,6 +43,14 @@ export default function Simulator({ products }: { products: SimProduct[] }) {
   const defStart = chosen.length ? chosen.map((s) => byKey[s.k].first).sort().pop()! : '';
   const defEnd = chosen.length ? chosen.map((s) => byKey[s.k].last).sort()[0] : '';
   useEffect(() => { setStart(defStart); setEnd(defEnd); }, [defStart, defEnd]);
+  const yrStart = (y: number) => { if (!defEnd) return ''; const t = new Date(defEnd); t.setFullYear(t.getFullYear() - y); return t.toISOString().slice(0, 10); };
+  const availYears = (y: number) => !!defStart && yrStart(y) >= defStart;
+  const maxYears = defStart && defEnd ? Math.floor((Date.parse(defEnd) - Date.parse(defStart)) / 86400000 / 365.25) : 0;
+  const effStart = custom ? start : period === 'max' ? defStart : availYears(+period) ? yrStart(+period) : defStart;
+  const effEnd = custom ? end : defEnd;
+  const periodErr = !custom && period !== 'max' && !!defStart && !availYears(+period) ? `선택한 ETF는 ${defStart}부터만 데이터가 있어 ${period}년은 계산할 수 없어요. 가능한 최대 기간은 약 ${maxYears}년입니다.` : '';
+  const weightErr = chosen.length > 1 && chosen.reduce((a, x) => a + x.w, 0) !== 100 ? `비중 합계가 ${chosen.reduce((a, x) => a + x.w, 0)}%예요. 100%로 맞춰주세요.` : '';
+  const reviewSel = chosen.filter((x) => byKey[x.k].review).map((x) => byKey[x.k].label);
 
   const setSlot = (i: number, k: string) => {
     if (k && slots.some((s, j) => j !== i && s.k === k)) { setMsg('같은 상품을 중복 선택할 수 없습니다.'); return; }
@@ -54,20 +62,21 @@ export default function Simulator({ products }: { products: SimProduct[] }) {
   async function load(k: string) {
     if (cache.current[k]) return cache.current[k];
     const r = await fetch(`${BASE}/data/products/${k.toLowerCase()}.json`); const j = await r.json(); const p = byKey[k];
-    cache.current[k] = { ...j, currency: p.currency, first: p.first, last: p.last, kind: p.kind }; return cache.current[k];
+    cache.current[k] = { ...j, div: p.review ? {} : j.div, currency: p.currency, first: p.first, last: p.last, kind: p.kind }; return cache.current[k];
   }
   async function run() {
     setMsg('');
     if (!chosen.length) return setMsg('ETF를 선택하세요.');
     if (wsum !== 100) return setMsg('비중 합계를 100%로 맞춰주세요.');
-    if (start < defStart) return setMsg(`시작일이 선택 상품 최초 거래일(${defStart})보다 빠릅니다. 상장 이전 구간은 실제 결과로 표시하지 않습니다.`);
+    if (periodErr) return setMsg(periodErr);
+    if (effStart < defStart) return setMsg(`시작일이 선택 상품 최초 거래일(${defStart})보다 빠릅니다. 상장 이전 구간은 실제 결과로 표시하지 않습니다.`);
     if (monthly <= 0 && lump <= 0) return setMsg('월 투자금 또는 일시금을 입력하세요.');
     setBusy(true);
     try {
       if (!fxRef.current) fxRef.current = await (await fetch(`${BASE}/data/fx.json`)).json();
       const D: any = { products: {}, fx: fxRef.current };
       for (const s of chosen) D.products[s.k] = await load(s.k);
-      const sel = chosen.map((s) => ({ k: s.k, w: s.w / 100 })); const o = { monthly, lump, start, end, reinvest: reinvest === '1', fee, spread };
+      const sel = chosen.map((s) => ({ k: s.k, w: s.w / 100 })); const o = { monthly, lump, start: effStart, end: effEnd, reinvest: reinvest === '1', fee, spread };
       const r = Engine.run(D, sel, o); if (r.error) { setMsg(r.error); setBusy(false); return; }
       const l = Engine.run(D, sel, { ...o, monthly: 0, lump: r.summary.principal });
       setRes({ r, l, sel, o, D });
@@ -82,44 +91,63 @@ export default function Simulator({ products }: { products: SimProduct[] }) {
 
   return (
     <div>
-      <p className="hint">위쪽의 <b>간단하게 보기 / 상세하게 보기</b>를 바꾸면 결과 화면의 깊이가 달라집니다. 같은 데이터·같은 계산입니다.</p>
+      <p className="hint">위쪽의 <b>그림으로 / 간단히 / 상세히</b>를 바꾸면 결과의 깊이가 달라집니다. 같은 데이터·같은 계산입니다.</p>
       <div className="card" style={{ marginTop: 12 }}>
-        <div className="grid g2">
-          <div>
-            <label>ETF 선택 (최대 3종, 비중 합 100%)</label>
-            {slots.map((s, i) => (
-              <div className="pickrow" key={i}>
-                <select aria-label={`ETF ${i + 1}`} value={s.k} onChange={(e) => setSlot(i, e.target.value)} style={{ flex: 1 }}>
-                  <option value="">(선택 안 함)</option>
-                  {Array.from(new Set(products.map((p) => p.cat))).map((c) => (<optgroup key={c} label={c}>{products.filter((p) => p.cat === c).map((p) => <option key={p.key} value={p.key}>{p.label}{p.kind === 'KR' ? ` · ${p.key}` : ''}</option>)}</optgroup>))}
-                </select>
-                <input type="number" aria-label={`비중 ${i + 1}`} min={0} max={100} value={s.w} onChange={(e) => setSlots(slots.map((x, j) => (j === i ? { ...x, w: +e.target.value } : x)))} />%
-              </div>))}
-            <div className="mut">{wsum !== 100 ? <span className="bad">비중 합계 {wsum}% (100%여야 함) </span> : null}{chosen.length ? `선택 상품 공통 최초일: ${defStart}` : ''}{chosen.some((x) => byKey[x.k].review) ? ' · 분배금 불일치 검토 상품 포함' : ''}</div>
-          </div>
-          <div className="grid g2" style={{ alignContent: 'start' }}>
-            <div><label>월 투자금 (원)</label><MoneyInput value={monthly} onChange={setMonthly} label="월 투자금" /></div>
-            <div><label>최초 일시금 (원, 선택)</label><MoneyInput value={lump} onChange={setLump} label="최초 일시금" /></div>
-            <div><label>시작일</label><input type="date" value={start} onChange={(e) => setStart(e.target.value)} /></div>
-            <div><label>종료일</label><input type="date" value={end} onChange={(e) => setEnd(e.target.value)} /></div>
-            <div><label>분배금 처리</label><select value={reinvest} onChange={(e) => setReinvest(e.target.value)}><option value="1">재투자 (배당락일 종가)</option><option value="0">현금 보유 (이자 없음)</option></select></div>
-            <div><label>적립일 규칙</label><select disabled><option>매월 첫 공통 거래일</option></select></div>
-            <div><label>계좌 유형</label><select value={acct} onChange={(e) => setAcct(e.target.value)}><option value="g">일반계좌</option><option value="isa">중개형 ISA</option><option value="pen">연금저축·IRP</option></select></div>
-            <div><label>표시 통화</label><select value={ccy} onChange={(e) => setCcy(e.target.value)}><option value="krw">원화</option><option value="usd">원화 + 달러 환산 보조</option></select></div>
-            {det ? (<><div><label>거래 수수료 (%, 가정)</label><input type="number" value={fee} step={0.01} min={0} onChange={(e) => setFee(+e.target.value)} /></div><div><label>환전 스프레드 (%, 가정, USD 상품)</label><input type="number" value={spread} step={0.05} min={0} onChange={(e) => setSpread(+e.target.value)} /></div></>) : null}
-          </div>
+        <h3>1분 만에 계산하기</h3>
+        <div className="grid g3">
+          <div><label htmlFor="sim-etf">① 어떤 ETF?</label>
+            <select id="sim-etf" aria-label="ETF 1" value={slots[0].k} onChange={(e) => setSlot(0, e.target.value)}>
+              <option value="">(선택)</option>
+              {Array.from(new Set(products.map((p) => p.cat))).map((c) => (<optgroup key={c} label={c}>{products.filter((p) => p.cat === c).map((p) => <option key={p.key} value={p.key}>{p.label}{p.kind === 'KR' ? ` · ${p.key}` : ''}</option>)}</optgroup>))}
+            </select></div>
+          <div><label htmlFor="sim-mon">② 매달 얼마씩?</label><MoneyInput id="sim-mon" value={monthly} onChange={setMonthly} label="월 투자금" /></div>
+          <div><label>③ 얼마 동안?</label>
+            <div className="chips" role="group" aria-label="투자 기간">{[['1', '1년'], ['3', '3년'], ['5', '5년'], ['10', '10년'], ['max', '최대']].map(([v, l]) => {
+              const ok = v === 'max' || availYears(+v); return (<button key={v} type="button" aria-pressed={!custom && period === v} className={!custom && period === v ? 'on' : ''} style={{ opacity: ok ? 1 : 0.45 }} onClick={() => { setPeriod(v); setCustom(false); }}>{l}</button>); })}</div>
+            {periodErr ? <div className="bad" role="alert" style={{ fontSize: 13 }}>{periodErr}</div> : <div className="mut" style={{ fontSize: 12 }}>{custom ? '직접 지정한 날짜를 사용 중' : `${effStart} ~ ${effEnd}`}</div>}</div>
         </div>
+        <p className="mut" style={{ margin: '8px 0' }}>기본값: 매월 첫 거래일에 매수 · 분배금(배당금) 재투자 · 세전 · 수수료 0 · 소수점 매수</p>
+        <details className="adv"><summary>상세 설정 (여러 ETF 섞기 · 일시금 · 날짜 직접 지정 · 분배금 · 계좌 · 통화 · 수수료)</summary>
+          <div className="grid g2" style={{ marginTop: 10 }}>
+            <div>
+              <label>ETF 섞기 (최대 3종, 비중 합 100%)</label>
+              {slots.map((sl, i) => (
+                <div className="pickrow" key={i}>
+                  {i === 0 ? <div style={{ flex: 1 }} className="mut">{sl.k ? byKey[sl.k]?.label : '① 에서 선택'}</div> : (
+                    <select aria-label={`ETF ${i + 1}`} value={sl.k} onChange={(e) => setSlot(i, e.target.value)} style={{ flex: 1 }}>
+                      <option value="">(추가 안 함)</option>
+                      {Array.from(new Set(products.map((p) => p.cat))).map((c) => (<optgroup key={c} label={c}>{products.filter((p) => p.cat === c).map((p) => <option key={p.key} value={p.key}>{p.label}{p.kind === 'KR' ? ` · ${p.key}` : ''}</option>)}</optgroup>))}
+                    </select>)}
+                  <input type="number" aria-label={`비중 ${i + 1}`} min={0} max={100} value={sl.w} onChange={(e) => setSlots(slots.map((x, j) => (j === i ? { ...x, w: +e.target.value } : x)))} />%
+                </div>))}
+              {weightErr ? <div className="bad" role="alert" style={{ fontSize: 13 }}>{weightErr}</div> : null}
+              <div className="mut" style={{ fontSize: 12 }}>{chosen.length ? `선택 상품 공통 최초일: ${defStart}` : ''}</div>
+            </div>
+            <div className="grid g2" style={{ alignContent: 'start' }}>
+              <div><label>최초 일시금 (원, 선택)</label><MoneyInput value={lump} onChange={setLump} label="최초 일시금" /></div>
+              <div><label>분배금(배당금) 처리</label><select value={reinvest} onChange={(e) => setReinvest(e.target.value)}><option value="1">재투자 (배당락일 종가)</option><option value="0">현금 보유 (이자 없음)</option></select></div>
+              <div style={{ gridColumn: '1 / -1' }}><label><input type="checkbox" checked={custom} onChange={(e) => { setCustom(e.target.checked); if (e.target.checked) { setStart(effStart); setEnd(effEnd); } }} /> 시작일·종료일 직접 지정</label></div>
+              {custom ? (<><div><label>시작일</label><input type="date" value={start} onChange={(e) => setStart(e.target.value)} /></div><div><label>종료일</label><input type="date" value={end} onChange={(e) => setEnd(e.target.value)} /></div></>) : null}
+              <div><label>계좌 유형</label><select value={acct} onChange={(e) => setAcct(e.target.value)}><option value="g">일반계좌</option><option value="isa">중개형 ISA</option><option value="pen">연금저축·IRP</option></select></div>
+              <div><label>표시 통화</label><select value={ccy} onChange={(e) => setCcy(e.target.value)}><option value="krw">원화</option><option value="usd">원화 + 달러 환산 보조</option></select></div>
+              <div><label>거래 수수료 (%, 가정)</label><input type="number" value={fee} step={0.01} min={0} onChange={(e) => setFee(+e.target.value)} /></div>
+              <div><label>환전 스프레드 (%, 가정, USD 상품)</label><input type="number" value={spread} step={0.05} min={0} onChange={(e) => setSpread(+e.target.value)} /></div>
+            </div>
+          </div>
+          <p className="mut">수수료·스프레드 기본값은 0(미반영)입니다. 소수점 매수, 잔여 현금 없음 가정. 분배금은 세전. 계좌 유형은 세금에 반영되지 않습니다(세전 계산).</p>
+        </details>
+        {reviewSel.length ? <div className="banner" role="note" style={{ marginTop: 10 }}>⚠ <b>{reviewSel.join(', ')}</b>: 분배금 데이터 검증이 끝나지 않아 <b>분배금을 계산에서 제외</b>합니다. 가격 변화만 반영된 결과이며 실제보다 낮게 나올 수 있어요(검증 대기).</div> : null}
         <div style={{ marginTop: 12, display: 'flex', gap: 8, flexWrap: 'wrap', alignItems: 'center' }}>
-          <button className="btn" onClick={run} disabled={busy}>{busy ? '계산 중…' : '계산'}</button>
+          <button className="btn" onClick={run} disabled={busy}>{busy ? '계산 중…' : '계산하기'}</button>
           <button className="btn sec" disabled={!res} onClick={() => dl('etf_dca_value.csv', Engine.toCSV(res.r))}>평가액 CSV</button>
           {det ? <button className="btn sec" disabled={!res} onClick={() => dl('etf_dca_trades.csv', Engine.tradesCSV(res.r))}>거래내역 CSV</button> : null}
           <span className="mut" role="status">{msg}</span>
         </div>
-        {det ? <p className="mut">수수료·스프레드 기본값은 0(미반영)입니다. 소수점 매수, 잔여 현금 없음 가정. 분배금은 세전.</p> : null}
       </div>
 
       {res ? (<>
         {acct !== 'g' ? <div className="banner" style={{ marginTop: 14 }}><span className="tag wait">세후 계산 미지원(기준 검증 필요)</span> 선택한 계좌 유형의 세금·한도는 검증된 세법 모듈 도입 전까지 반영하지 않습니다. 아래는 계좌와 무관한 세전 결과입니다.</div> : null}
+        {reviewSel.length ? <div className="banner" role="note" style={{ marginTop: 14 }}>이 결과는 <b>{reviewSel.join(', ')}</b>의 분배금을 제외한 가격 기준입니다(분배금 검증 대기). 실제 총수익은 다를 수 있어요.</div> : null}
         {!det ? (
           <div className="card" style={{ marginTop: 14, borderColor: '#2b5c93' }}><b>한 줄 요약</b>
             <div style={{ fontSize: 17, marginTop: 4 }}>{won(s.principal)}을 넣어 {won(s.value)}이 됐고({s.profit >= 0 ? '+' : ''}{won(s.profit)}), 가장 힘들었을 때는 넣은 돈보다 {won(Math.abs(s.worstLossAmt))}({pct(Math.abs(s.worstLossPct))}) 적었습니다{s.worstLossAmt ? ` (${s.worstLossAmtDate})` : ''}.</div>
@@ -165,6 +193,7 @@ export default function Simulator({ products }: { products: SimProduct[] }) {
             {s.underwater.length ? s.underwater.map((u: any, i: number) => (<tr key={i}><td>{u.start}</td><td>{u.end ?? '미해소'}</td><td>{Math.round(u.days)}</td><td>{won(u.worst)} ({pct(u.worstPct)})</td></tr>)) : <tr><td colSpan={4}>원금 미달 구간 없음</td></tr>}</tbody></table></div>
           <div className="mut">‘원금 회복’ = 평가액이 같은 시점까지의 누적 납입원금 이상이 된 첫 거래일. ETF MDD와 계좌 낙폭은 별개의 지표입니다.</div>
         </div>
+        <details className="card" style={{ marginTop: 14 }}><summary>이 결과, 어떻게 읽나요?</summary><ul><li><b>지금 가치 vs 넣은 돈</b>: 지금 팔면 받을 금액과 내가 넣은 총액이에요. 차이가 번 돈이에요.</li><li><b>가장 힘들었던 때</b>: 적립하는 동안 넣은 돈보다 가장 많이 적었던 순간이에요. 이 정도는 견뎌야 했다는 뜻이에요.</li><li><b>일시금 비교</b>: 처음부터 목돈이 있었다면 어땠는지 참고용이에요. 매달 월급으로 넣는 사람에게는 해당하지 않아요.</li><li>모든 숫자는 <b>과거 실제 데이터로 계산한 세전 결과</b>이며 앞으로를 예측하지 않아요.</li></ul></details>
         {ccy === 'usd' ? (() => {
           const us = res.r.trades.filter((t: any) => byKey[t.k].currency === 'USD');
           if (!us.length) return <div className="card" style={{ marginTop: 14 }}><b>달러 환산 보조</b><div className="mut">선택한 상품에 미국 상장(USD) 상품이 없어 표시하지 않습니다(자료 부족).</div></div>;

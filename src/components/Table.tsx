@@ -1,7 +1,7 @@
 export default function Table({ head, rows, caption, detail = [] }: { head: string[]; rows: React.ReactNode[][]; caption?: string; detail?: number[] }) {
   const dc = (i: number) => (detail.includes(i) ? 'detail-only' : undefined);
   return (
-    <div className="tbl">
+    <div className={`tbl${head.length >= 5 ? " wide" : ""}`}>
       <table>
         {caption ? <caption>{caption}</caption> : null}
         <thead><tr>{head.map((h, i) => <th key={h} scope="col" className={dc(i)}>{h}</th>)}</tr></thead>

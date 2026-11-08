@@ -26,9 +26,9 @@ export default function Page() {
       {years.map((y) => (
         <section key={y}>
           <h2>{y}년 적립 결과</h2>
-          <div className="tbl"><table><caption>월 100만원 · {y}년 · 납입금 대비 수익률 · 정렬: 유형 순</caption><thead><tr><th>ETF</th><th>표본</th><th><T e="운 나쁜 시작" d="최악 시작" /></th><th className="detail-only">25% 지점</th><th><T e="가운데 값" d="중앙값" /></th><th className="detail-only">75% 지점</th><th><T e="운 좋은 시작" d="최고 시작" /></th><th><T e="끝났을 때 넣은 돈보다 적었던 비율" d="종료 시 원금 미달" /></th><th className="detail-only">적립 중 최악 손실(중앙값)</th></tr></thead><tbody>
+          <div className="tbl wide"><table><caption>월 100만원 · {y}년 · 납입금 대비 수익률 · 정렬: 유형 순</caption><thead><tr><th>ETF</th><th>표본</th><th><T e="운 나쁜 시작" d="최악 시작" /></th><th className="detail-only">25% 지점</th><th><T e="가운데 값" d="중앙값" /></th><th className="detail-only">75% 지점</th><th><T e="운 좋은 시작" d="최고 시작" /></th><th><T e="끝났을 때 넣은 돈보다 적었던 비율" d="종료 시 원금 미달" /></th><th className="detail-only">적립 중 최악 손실(중앙값)</th></tr></thead><tbody>
             {all.map((k) => { const w = rolling(k, [3, 5, 10]).find((r) => r.years === y); return w ? (
-              <tr key={k}><th scope="row"><Link href={`/etf/${k.toLowerCase()}/`}>{label(k)}</Link></th><td>{w.n}개</td>
+              <tr key={k}><th scope="row"><Link href={`/etf/${k.toLowerCase()}/`}>{label(k)}</Link>{w.noDiv ? <div><Tag kind="wait">분배금 제외(검증 대기)</Tag></div> : null}</th><td>{w.n}개</td>
                 <td className={w.ret.min < 0 ? 'bad' : ''}>{pct(w.ret.min)} <span className="mut">({w.worstStart.d.slice(0, 7)})</span></td><td className="detail-only">{pct(w.ret.p25)}</td><td>{pct(w.ret.median)}</td><td className="detail-only">{pct(w.ret.p75)}</td>
                 <td>{pct(w.ret.max)} <span className="mut">({w.bestStart.d.slice(0, 7)})</span></td><td className={w.endBelow > 0 ? 'warn' : ''}>{pct(w.endBelow, 0)}</td><td className="detail-only bad">{pct(w.worstLoss.median)}</td></tr>) : null; })}
           </tbody></table></div>

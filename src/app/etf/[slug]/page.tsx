@@ -95,7 +95,7 @@ export default async function EtfPage({ params }: { params: Promise<{ slug: stri
       <FactTable k={k} />
       {roll.length ? (<>
         <h2>과거에 이 ETF로 적립했다면? <span className="mut" style={{ fontSize: 14 }}>(롤링 결과)</span></h2>
-        <p className="mut">월 100만원 · 분배금 재투자 · 원화 기준 · 세전. 가능한 모든 시작월마다 N년 적립한 실제 과거 결과의 분포입니다. 예측이 아닙니다.</p>
+        <p className="mut">월 100만원 · 분배금 재투자 · 원화 기준 · 세전. 가능한 모든 시작월마다 N년 적립한 실제 과거 결과의 분포입니다. 예측이 아닙니다.{p.div_status === 'review' ? <> <Tag kind="wait">분배금 검증 대기 — 분배금을 제외한 가격 기준</Tag></> : null}</p>
         <Table head={['적립 기간', '표본(시작월 수)', '중앙값 수익률', '최악 시작', '최고 시작', '종료 시 원금 미달이었던 비율', '적립 중 최악 손실(중앙값)']} detail={[1, 6]} rows={roll.map((w) => [`${w.years}년`, `${w.n}개`, pct(w.ret.median), `${pct(w.ret.min)} (${w.worstStart.d.slice(0, 7)})`, `${pct(w.ret.max)} (${w.bestStart.d.slice(0, 7)})`, pct(w.endBelow, 0), pct(w.worstLoss.median)])} caption="납입금 대비 수익률 분포" />
         <p className="mut">표본은 서로 겹치는 기간이라 독립적인 관측이 아닙니다. 자세한 설명은 <Link href="/rolling/">과거 롤링 결과</Link>.</p>
       </>) : null}
