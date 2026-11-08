@@ -35,7 +35,8 @@ function fileToPath(file) {
 }
 
 if (!existsSync(out)) throw new Error('out/ not found. Run npm run build first.');
-const files = walk(out).filter((file) => file.endsWith('index.html'));
+// Next.js exports error pages too; these are intentionally noindex, non-sitemap pages.
+const files = walk(out).filter((file) => file.endsWith('index.html') && !/(?:^|[\\/])(?:404|_not-found)[\\/]index\\.html$/.test(file));
 const paths = new Set(files.map(fileToPath));
 check(paths.size >= 60, 'out/', 'expected 60+ static pages, found ' + paths.size);
 
@@ -51,7 +52,7 @@ for (const file of files) {
   const titles = [...html.matchAll(/<title>(.*?)<\/title>/gis)];
   const h1 = [...html.matchAll(/<h1\b/gi)];
   check(canonical === expected, path, 'canonical mismatch: ' + String(canonical));
-  check(titles.length === 1 && !!titles[0][1].trim(), path, 'expected one nonempty title');
+  check(titles.length === 1 && !!titles[0][1].trim(), path, 'expected one nonempty title, found ' + titles.length + ' [' + titles.map((t) => t[1].slice(0, 90)).join(' / ') + ']');
   check(!!description && !!attr(description, 'content')?.trim(), path, 'missing meta description');
   check(attr(ogUrl ?? '', 'content') === expected, path, 'og:url mismatch');
   check(!robots || !/noindex/i.test(attr(robots, 'content') ?? ''), path, 'unexpected noindex');
