@@ -1,0 +1,214 @@
+{
+ "meta": {
+  "generated": "2026-11-08",
+  "scope": "groupC 미국 주식형",
+  "page_asof": "2026-11-06 (운용사 상품페이지 기준일)",
+  "note": "모든 값은 운용사 공식 상품페이지와 투자설명서(PDF)에서 직접 확인. KRX/DART 직접 조회는 하지 않음(투자설명서는 DART 제출본과 동일 문서이나 DART 원문 대조는 미수행). 네이버금융 등 제3자 포털 미사용."
+ },
+ "etfs": [
+  {
+   "code": "360750",
+   "official_name": "TIGER 미국S&P500",
+   "fund_legal_name": "미래에셋TIGER미국S&P500증권상장지수투자신탁(주식)",
+   "name_history": "연혁상 명칭 변경 기록 없음(투자설명서 2026-10-01 기준 연혁)",
+   "issuer": "미래에셋자산운용",
+   "benchmark_index": "S&P 500 Index(원화환산) (투자설명서 비교지수 표기; TR/PR 구분 문서에 명시 없음)",
+   "benchmark_return_type": null,
+   "inception_date": "2020-08-06",
+   "listing_date": "2020-08-07",
+   "currency_exposure": "환노출(환헤지 안 함)",
+   "total_expense_pct": 0.0068,
+   "expense_as_of": "투자설명서 작성기준일 2026-10-01",
+   "real_expense_ratio_pct": 0.0668,
+   "distribution_policy": "분기분배(지급기준일: 매 1·4·7·10월 마지막 영업일 및 회계기간 종료일, 지급은 익영업일로부터 7영업일 이내). 현금분배, 분배금 지급 여부·분배율은 KRX 공시",
+   "tracking_error_info": null,
+   "source_urls": [
+    "https://investments.miraeasset.com/tigeretf/ko/product/search/detail/index.do?ksdFund=KR7360750004",
+    "https://investments.miraeasset.com/tigeretf/upload/etf/20261008090949000003.pdf"
+   ],
+   "evidence": [
+    "상품페이지: '환헤지 사항 환헤지를 하지 아니함', '총보수 연 0.0068%', '상장일 2020.08.07'",
+    "투자설명서: '비교지수 : S&P 500 Index(원화환산) * 100%'",
+    "투자설명서 보수표: '0.0068 0.06 0.0668'(총보수/기타비용/총보수·비용)",
+    "투자설명서 연혁: '2020.08.02 증권신고서 효력발생 (최초 상장: 2020.08.07)'; 성과표 최초설정일 '2020.08.06'",
+    "'지급기준일 : 매 1월 4월 7월 10월의 마지막 영업일 및 회계기간 종료일'"
+   ],
+   "notes": "TR 여부 문서에 명시 없음→null. 추적오차율·괴리율 공시값은 해당 페이지에서 확인 못 함(null). 총보수 구성: 운용0.0002+지정참가0.0001+신탁0.005+일반사무0.0015."
+  },
+  {
+   "code": "379800",
+   "official_name": "KODEX 미국S&P500",
+   "fund_legal_name": "삼성KODEX 미국S&P500증권상장지수투자신탁[주식]",
+   "name_history": "2025-01-24 투자신탁 명칭 변경: 삼성KODEX 미국S&P500 Total Return증권상장지수투자신탁[주식] → 삼성KODEX 미국S&P500 증권상장지수투자신탁[주식] (구 ETF 단축명 'TR' 표기 여부는 이번 조사에서 미확인)",
+   "issuer": "삼성자산운용",
+   "benchmark_index": "S&P 500 Index(KRW) — Price Return Index (2025-02-21 기초지수 변경: S&P 500 Total Return Index → S&P 500 Index)",
+   "benchmark_return_type": "PR (2025-02-21 이후; 이전 TR)",
+   "inception_date": "2021-04-07",
+   "listing_date": "2021-04-09",
+   "currency_exposure": "환노출(상품목록 '환노출' 표기; 환헤지 안 함)",
+   "total_expense_pct": 0.0062,
+   "expense_as_of": "상품페이지 기준일 2026-11-06 / 투자설명서 작성기준일 2026-08-07",
+   "real_expense_ratio_pct": 0.0738,
+   "distribution_policy": "분기분배(1·4·7·10월 마지막 영업일 및 회계기간 종료일). 2025-02 이전 TR 운용 당시 유보된 '과거 유보배당금'을 2025-07 기준 8월초부터 15회 분기 분할 지급 계획(투자설명서)",
+   "tracking_error_info": "운용사 상품페이지 '위험분석-트레킹에러 0.02%'(적용기간 1년, 기준일 2026-11-06)",
+   "source_urls": [
+    "https://www.samsungfund.com/etf/product/view.do?id=2ETFE4",
+    "https://www.samsungfund.com/upload/invest/2ETFE4-A.pdf"
+   ],
+   "evidence": [
+    "'총 보수(연) 0.0062% (지정참가회사 : 0.001%, 집합투자 : 0.0001%, 신탁 : 0.005%, 일반사무 : 0.0001%)'",
+    "투자설명서: '2025. 1.24 투자신탁 명칭 변경(삼성KODEX 미국S&P500 Total Return증권상장지수투자신탁[주식] → ...)', '2025. 2.21 기초지수 변경(TR → PR)'",
+    "'비교지수 : S&P500 Index(KRW) * 100%', '(Price Return Index)'",
+    "보수표 '0.0062 0.0676 0.0738'",
+    "상품페이지 상장일 2021.04.09 vs 투자설명서 '상장(예정)일 2021. 4. 8'",
+    "상품페이지: '기초지수는 배당금재투자를 가정한 총수익지수입니다'(수익률 차트 주석; 위 PR 변경 기록과 상충)"
+   ],
+   "notes": "상장일 불일치: 상품페이지 2021-04-09, 투자설명서 상장(예정)일 2021-04-08 → 상품페이지 값 채택, KRX 미대조. 상품페이지 차트 주석은 총수익지수로 표기되어 투자설명서(PR)와 상충 → 투자설명서 우선, 재확인 필요. 환노출 근거는 상품목록 라벨과 '환헤지 비율' 표기 없음(투자설명서 E4 환헤지 문구는 직접 인용 못 함)."
+  },
+  {
+   "code": "449180",
+   "official_name": "KODEX 미국S&P500(H)",
+   "fund_legal_name": "삼성KODEX 미국S&P500증권상장지수투자신탁[주식](H)",
+   "name_history": null,
+   "issuer": "삼성자산운용",
+   "benchmark_index": "S&P 500 Index (Price Return Index; 원화환산 표기 없음, 환헤지형)",
+   "benchmark_return_type": "PR",
+   "inception_date": "2022-11-30",
+   "listing_date": "2022-12-02",
+   "currency_exposure": "환헤지(H): 외화표시자산의 80~110% 목표 환헤지, 기준일 현재 환헤지 99.91% / 환노출 0.09%",
+   "total_expense_pct": 0.0099,
+   "expense_as_of": "상품페이지 2026-11-06 / 투자설명서 작성기준일 2026-08-07",
+   "real_expense_ratio_pct": 0.1353,
+   "distribution_policy": "분기분배(1·4·7·10월 마지막 영업일 및 회계기간 종료일)",
+   "tracking_error_info": null,
+   "source_urls": [
+    "https://www.samsungfund.com/etf/product/view.do?id=2ETFI3",
+    "https://www.samsungfund.com/upload/invest/2ETFI3-A.pdf"
+   ],
+   "evidence": [
+    "'총 보수(연) 0.0099% (지정참가회사 : 0.001%, 집합투자 : 0.0009%, 신탁 : 0.005%, 일반사무 : 0.003%)'",
+    "'상장일 2022.12.02'(상품페이지); 투자설명서 '상장(예정)일 2022.12. 5'",
+    "보수표 '0.0099 0.1254 0.1353'",
+    "'환헤지 비율 외화표시자산의 80 ~ 110 / 99.91 / 환노출 0.09'",
+    "'S&P500 Index는 ... (Price Return Index)입니다'; 성과표 최초설정일 2022-11-30"
+   ],
+   "notes": "상장일 불일치(상품페이지 2022-12-02 vs 투자설명서 예정일 2022-12-05)→상품페이지 채택, KRX 미대조. 명칭 변경 이력은 해당 문서에서 확인하지 못함(null). 트레킹에러 값은 확인 못 함. 지수의 환헤지 버전(Hedged) 여부는 문서에 별도 명칭 없음."
+  },
+  {
+   "code": "133690",
+   "official_name": "TIGER 미국나스닥100",
+   "fund_legal_name": "미래에셋TIGER미국나스닥100증권상장지수투자신탁(주식)",
+   "name_history": "2012-03-26 합병·명칭변경: 舊 미래에셋맵스 TIGER 나스닥100 증권상장지수투자신탁(주식); 2022-08-12 명칭 변경: 미래에셋TIGER나스닥100증권상장지수투자신탁(주식) → 미래에셋TIGER 미국나스닥100증권상장지수투자신탁(주식)",
+   "issuer": "미래에셋자산운용",
+   "benchmark_index": "The NASDAQ-100® Index(원화환산)",
+   "benchmark_return_type": null,
+   "inception_date": "2010-10-15",
+   "listing_date": "2010-10-18",
+   "currency_exposure": "환노출(환헤지 안 함, '환노출형')",
+   "total_expense_pct": 0.0068,
+   "expense_as_of": "투자설명서 작성기준일 2026-05-21",
+   "real_expense_ratio_pct": 0.1068,
+   "distribution_policy": "분기분배(매 1·4·7·10월 마지막 영업일 및 회계기간 종료일; 익영업일로부터 7영업일 이내 지급). 현금분배",
+   "tracking_error_info": null,
+   "source_urls": [
+    "https://investments.miraeasset.com/tigeretf/ko/product/search/detail/index.do?ksdFund=KR7133690008",
+    "https://investments.miraeasset.com/tigeretf/upload/etf/20260528095823000271.pdf"
+   ],
+   "evidence": [
+    "상품페이지: '환헤지 사항 환헤지를 하지 아니함', '총보수 연 0.0068%', '단, 환노출형으로서 ...'",
+    "투자설명서 연혁: '2010.10.15 최초설정 (최초상장 : 2010.10.18)'",
+    "'비교지수 : The NASDAQ-100® 지수(원화환산) * 100%'",
+    "보수표 '0.0068 0.1 0.1068'",
+    "'2022.08.12 투자신탁 명칭 변경(미래에셋TIGER나스닥100증권상장지수투자신탁(주식)→미래에셋TIGER 미국나스닥100...)'"
+   ],
+   "notes": "TR/PR 구분 문서에 명시 없음→null. 분배 지급시기: 상품페이지는 10영업일, 투자설명서는 7영업일 이내(문서 간 상이, 설명서 채택). 추적오차율·괴리율 확인 못 함."
+  },
+  {
+   "code": "379810",
+   "official_name": "KODEX 미국나스닥100",
+   "fund_legal_name": "삼성KODEX 미국나스닥100증권상장지수투자신탁[주식]",
+   "name_history": "2025-01-24 투자신탁 명칭 변경: 삼성KODEX 미국나스닥100 Total Return증권상장지수투자신탁[주식] → 삼성KODEX 미국나스닥100 증권상장지수투자신탁[주식]; 2026-05-15 '지수방법론 변경에 따른 정정'",
+   "issuer": "삼성자산운용",
+   "benchmark_index": "NASDAQ-100 Index(KRW) — Price Return Index (2025-02-21 변경: NASDAQ-100 Total Return Index → NASDAQ-100 Index)",
+   "benchmark_return_type": "PR (2025-02-21 이후; 이전 TR)",
+   "inception_date": "2021-04-07",
+   "listing_date": "2021-04-09",
+   "currency_exposure": "환노출(환헤지 전략 실시하지 않음)",
+   "total_expense_pct": 0.0062,
+   "expense_as_of": "상품페이지 2026-11-06 / 투자설명서 작성기준일 2026-08-07",
+   "real_expense_ratio_pct": 0.1003,
+   "distribution_policy": "분기분배(1·4·7·10월 마지막 영업일 및 회계기간 종료일). 과거 유보배당금 15회 분기 분할 지급 계획 동일 적용",
+   "tracking_error_info": "운용사 상품페이지 '위험분석-트레킹에러 0.07%'(적용기간 1년, 기준일 2026-11-06)",
+   "source_urls": [
+    "https://www.samsungfund.com/etf/product/view.do?id=2ETFE3",
+    "https://www.samsungfund.com/upload/invest/2ETFE3-A.pdf"
+   ],
+   "evidence": [
+    "'총 보수(연) 0.0062% (지정참가회사 : 0.001%, 집합투자 : 0.0001%, 신탁 : 0.005%, 일반사무 : 0.0001%)'",
+    "'환율변동위험 제거를 위한 환헷지전략은 실시하지 않을 계획이므로 환율변동에 따른 위험에 노출'",
+    "'2025. 1.24 투자신탁 명칭 변경 ...', '2025. 2.21 기초지수 변경(TR → PR)', '2026. 5.15 지수방법론 변경에 따른 정정'",
+    "보수표 '0.0062 0.0941 0.1003'",
+    "'비교지수 : NASDAQ-100 Index(KRW) * 100%', '(Price Return Index)'"
+   ],
+   "notes": "상장일 불일치(상품페이지 2021-04-09 vs 설명서 예정일 2021-04-08)→상품페이지 채택, KRX 미대조. 상품페이지 차트 주석 '총수익지수'와 설명서 PR 상충."
+  },
+  {
+   "code": "449190",
+   "official_name": "KODEX 미국나스닥100(H)",
+   "fund_legal_name": "삼성KODEX 미국나스닥100증권상장지수투자신탁[주식](H)",
+   "name_history": null,
+   "issuer": "삼성자산운용",
+   "benchmark_index": "NASDAQ-100 Index (Price Return Index; 환헤지형)",
+   "benchmark_return_type": "PR",
+   "inception_date": "2022-11-30",
+   "listing_date": "2022-12-02",
+   "currency_exposure": "환헤지(H): 외화표시자산의 80~110% 목표 환헤지, 기준일 현재 환헤지 99.98% / 환노출 0.02%",
+   "total_expense_pct": 0.0099,
+   "expense_as_of": "투자설명서 작성기준일 2026-08-24",
+   "real_expense_ratio_pct": 0.1269,
+   "distribution_policy": "분기분배(운용사 팩트시트: '분배금 발생 시 분기 지급')",
+   "tracking_error_info": null,
+   "source_urls": [
+    "https://www.samsungfund.com/etf/product/view.do?id=2ETFI2",
+    "https://www.samsungfund.com/upload/invest/2ETFI2-A.pdf",
+    "https://m.samsungfund.com/sheet/20251013/2ETFI2_20250930.pdf"
+   ],
+   "evidence": [
+    "팩트시트: '총 보수 연 0.0099% (지정판매 0.001%, 집합투자 0.0009%, 신탁 0.005%, 일반사무 0.003%) 상장일 2022.12.02'",
+    "보수표 '0.0099 0.117 0.1269'",
+    "'이 투자신탁은 환율변동으로 인한 위험을 관리하기 위하여 노출된 외화표시 자산에 대해 환헤지 전략을 실행'; '80 ~ 110 / 99.98 / 0.02'",
+    "'기초지수명: NASDAQ-100 Index ... (Price Return Index)'; 설정일 2022-11-30"
+   ],
+   "notes": "상품페이지 본문은 직접 수집하지 못함(id=2ETFI2는 검색결과/PDF로만 확인) → 상장일은 2025-09 팩트시트 값, 설명서 예정일은 2022-12-05로 불일치. 명칭 변경 이력·추적오차 확인 못 함."
+  },
+  {
+   "code": "494410",
+   "official_name": "PLUS 미국S&P500성장주",
+   "fund_legal_name": "한화 PLUS 미국S&P500성장주증권상장지수투자신탁(주식)",
+   "name_history": null,
+   "issuer": "한화자산운용",
+   "benchmark_index": "S&P 500 Growth 지수(원화환산) — Price Return Index, 산출: S&P Dow Jones Indices, LLC",
+   "benchmark_return_type": "PR",
+   "inception_date": "2024-10-18",
+   "listing_date": "2024-10-22",
+   "currency_exposure": "환노출(환헤지 전략 기본적으로 실시하지 않음)",
+   "total_expense_pct": 0.0062,
+   "expense_as_of": "상품페이지 2026-11-06 (총보수 기존 0.04%에서 0.0062%로 인하)",
+   "real_expense_ratio_pct": 0.1239,
+   "distribution_policy": "분기분배(매 1·4·7·10월 마지막 영업일 및 회계기간 종료일; 지급 익영업일로부터 10영업일 이내). 최근 분배금 15원(기준일 2026-10-30)",
+   "tracking_error_info": "시장 괴리율 1.04%(2026-11-06, 운용사 일자별 기준가격 표). 추적오차율은 확인 못 함",
+   "source_urls": [
+    "https://plusetf.co.kr/product/detail?n=006375",
+    "https://www.plusetf.co.kr/upload/fund/J260231320%ED%88%AC%EC%9E%90%EC%84%A4%EB%AA%85%EC%84%9C-%ED%95%9C%ED%99%94%20PLUS%20%EB%AF%B8%EA%B5%ADS%EF%BC%86P500%EC%84%B1%EC%9E%A5%EC%A3%BC%EC%A6%9D%EA%B6%8C%EC%83%81%EC%9E%A5%EC%A7%80%EC%88%98%ED%88%AC%EC%9E%90%EC%8B%A0%ED%83%81(%EC%A3%BC%EC%8B%9D)-006375-20260203.pdf"
+   ],
+   "evidence": [
+    "'보수 (연) 0.0062% (집합투자 : 0.0001% , 지정참가회사 : 0.0001% , 신탁 : 0.005% , 일반사무 : 0.001%)'; 투자포인트 '총보수 기존 0.04%에서 0.0062%로 인하'",
+    "'기초지수안내 S&P 500 Growth 지수(원화환산) ... 산출기관 : S&P Dow Jones Indices, LLC'; 설명서 '(Price Return Index)로서 주가 변동성과만을 반영'",
+    "'이 투자신탁은 ... 환헤지 전략을 기본적으로 실시하지 않으므로 ... 환율변동위험에 노출'",
+    "설명서 보수표 '0.0062 ... 0.1177 0.1239'; 성과표 최초설정일 2024.10.18; 상품페이지 상장일 2024.10.22",
+    "'일자별 기준가격 ... 2026.11.06 ... 시장 괴리율 1.04'"
+   ],
+   "notes": "TER 0.1239는 설명서 성과기준일 2026-01-16 부근(2026-02-03 문서) 회계값으로 이후 변동 가능; 증권거래비용 포함 여부 분리 표기됨. 명칭 변경 이력은 문서에서 확인 못 함(name_history 불확실). 총보수 0.04%→0.0062% 인하 시점 미확인."
+  }
+ ]
+}

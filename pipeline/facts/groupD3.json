@@ -1,0 +1,95 @@
+{
+ "446720": {
+  "official_name": "신한SOL미국배당다우존스증권상장지수투자신탁[주식] (종목명 SOL 미국배당다우존스)",
+  "name_history": null,
+  "issuer": "신한자산운용",
+  "benchmark_index": "Dow Jones U.S. Dividend 100 Index (Price Return, 원화환산; Bloomberg DJUSDIV Index) — PR",
+  "inception_date": null,
+  "listing_date": "2022-11-15",
+  "currency_exposure": "환노출(환헤지 안 함)",
+  "total_expense_pct": 0.01,
+  "expense_as_of": "투자설명서 작성기준일 2026-01-08 (효력 2026-01-13); 2023-08-09 부로 0.03%→0.01% 인하",
+  "real_expense_ratio_pct": 0.0772,
+  "distribution_policy": "월 1회 분배(매월 마지막 영업일 기준, 운용사 정책에 따라 유보/변동 가능)",
+  "strategy_notes": "완전복제 원칙(일부 표본추출 가능), 환헤지 미실시. 10년 이상 연속 배당 미국 상장기업 중 펀더멘털 상위 100종목. 이익초과분배 가능.",
+  "same_index_as": [
+   "SCHD"
+  ],
+  "same_index_note": "SOL 투자설명서 '지수명 Dow Jones U.S. Dividend 100 Index' = Schwab SCHD 투자설명서 'Dow Jones U.S. Dividend 100 Index'. 단 SOL/ACE는 Price Return 지수, SCHD는 total return 목표(변형 차이).",
+  "source_urls": [
+   "https://www.shinhanfund.com/file/download/fundDocument/210942/description",
+   "https://www.soletf.com/ko/fund/etf/summary/210942",
+   "https://banking.hanabank.com/cont/mall/mall12/mall1202/1522313_118876.jsp",
+   "https://www.sec.gov/Archives/edgar/data/1454889/000110465926020681/tm266454-15_497k.htm"
+  ],
+  "evidence": [
+   "“Dow Jones U.S. Dividend 100 Index(PR: Price Return)”를 기초지수로 하여 1좌당 순자산가치의 변동률이 기초지수의 변동률과 유사하도록 운용",
+   "환헤지 전략은 실시하지 않을 계획이므로 환율변동위험에 노출됩니다",
+   "총보수 0.0100 / 지정참가회사보수 0.0010 / 총보수비용 0.0772",
+   "soletf: 상장일 2022.11.15, 총보수 연 0.01%, 분배지급일 월 1회",
+   "SCHD: “track ... the total return of the Dow Jones U.S. Dividend 100 Index”"
+  ],
+  "notes": "설정일(inception) 공식 문서에서 미확인(모집기간 시작 2022-11-07만 확인). 과거 종목명 이력 공식 문서에서 미확인(하나은행 공시상 2024-03 펀드명 '신한SOL미국배당다우존스증권상장지수투자신탁[주식]'). 참고: 210972 문서는 (H)상품이라 제외, 210942 사용. 총보수비용 0.0772는 투자설명서 기준 최근 회계연도(2025) 값으로 추정되나 기간 명시 미확인."
+ },
+ "402970": {
+  "official_name": "한국투자 ACE 미국배당다우존스 증권 상장지수투자신탁(주식) (펀드코드 DN447; 종목명 ACE 미국배당다우존스)",
+  "name_history": null,
+  "issuer": "한국투자신탁운용",
+  "benchmark_index": "Dow Jones U.S. Dividend 100 Price Return Index (S&P Dow Jones Indices 산출; 비교지수는 원화환산) — PR",
+  "inception_date": "2021-10-19",
+  "listing_date": null,
+  "currency_exposure": "환노출 (비교지수 원화환산; 환헤지 언급 없음, 간이설명서 기준 - 헤지 전략 문구 미확인)",
+  "total_expense_pct": 0.01,
+  "expense_as_of": "간이투자설명서 작성기준일 2025-12-31",
+  "real_expense_ratio_pct": 0.0691,
+  "distribution_policy": "매월 분배금 지급 구조(금액 확정 아님, 변동)",
+  "strategy_notes": "S&P Dow Jones Indices 산출 Dow Jones U.S. Dividend 100 Price return Index 추종, 지정참가회사보수 0.0005%.",
+  "same_index_as": [
+   "SCHD"
+  ],
+  "same_index_note": "ACE 설명서 'Dow Jones U.S. Dividend 100 Price return Index' vs SCHD 'Dow Jones U.S. Dividend 100 Index' — 동일 지수군, PR 변형(SCHD는 TR 목표).",
+  "source_urls": [
+   "https://ftp.kim.co.kr/doc/M00001/M00028/20260821/221223/1/9002L_20260827_%ED%95%9C%EA%B5%AD%ED%88%AC%EC%9E%90ACE%EB%AF%B8%EA%B5%AD%EB%B0%B0%EB%8B%B9%EB%8B%A4%EC%9A%B0%EC%A1%B4%EC%8A%A4%EC%A6%9D%EA%B6%8C%EC%83%81%EC%9E%A5%EC%A7%80%EC%88%98%ED%88%AC%EC%9E%90%EC%8B%A0%ED%83%81(%EC%A3%BC%EC%8B%9D)%EA%B0%84%EC%9D%B4%ED%88%AC%EC%9E%90%EC%84%A4%EB%AA%85%EC%84%9C.pdf",
+   "https://www.aceetf.co.kr/fund/K55101DN4471",
+   "https://www.sec.gov/Archives/edgar/data/1454889/000110465926020681/tm266454-15_497k.htm"
+  ],
+  "evidence": [
+   "“Dow Jones U.S. Dividend 100 Price return Index”를 기초지수로 하여 1좌당 순자산가치의 변동률을 기초지수의 변동률과 유사하도록",
+   "총보수 0.0100 / 지정참가회사보수 0.0005 / 총보수·비용 0.0691",
+   "투자신탁 최초설정일 2021.10.19",
+   "이 투자신탁은 매월 분배금을 지급하는 구조로 운용되는 투자신탁"
+  ],
+  "notes": "상장일: ACE 공식 페이지는 JS 렌더링으로 값 미노출, 공식 문서 미확인(제3자는 2021-10-21 언급 → 미채택). 명칭 이력 공식 미확인. 환헤지 여부는 간이설명서에서 명시 문구 확인 못함(비교지수가 원화환산·H 표기 없음 → 환노출 추정은 근거 약함)."
+ },
+ "469060": {
+  "official_name": "KB RISE 미국반도체NYSE 증권 상장지수 투자신탁(주식) (펀드코드 E6590; 종목명 RISE 미국반도체NYSE)",
+  "name_history": null,
+  "issuer": "KB자산운용",
+  "benchmark_index": "NYSE Semiconductor Index (ICE Data Indices 산출) 의 원화환산지수(환헤지 안함); PR/TR 구분은 공식 문서 미명시 (KB 사이트 지수명 'ICE Semiconductor Index(KRW)(T-1)')",
+  "inception_date": "2023-10-20",
+  "listing_date": "2023-10-24",
+  "currency_exposure": "환노출(환헤지 안함)",
+  "total_expense_pct": 0.01,
+  "expense_as_of": "투자설명서 작성기준일 2026-07-20 (효력 2026-08-07)",
+  "real_expense_ratio_pct": 0.219,
+  "distribution_policy": "분기 분배(1·4·7·10월 마지막 영업일 및 회계기간 종료일)",
+  "strategy_notes": "기초지수 완전복제. 지수는 ICE USC 반도체 분류 상위 30개 기업, 수정시가총액 가중. 총보수 구성: 판매 0.001, 수탁 0.005, 위탁 0.001, 사무수탁 0.003.",
+  "same_index_as": [
+   "SOXX"
+  ],
+  "same_index_note": "RISE 설명서 'NYSE Semiconductor Index' = iShares SOXX 페이지 Benchmark Index 'NYSE Semiconductor Index'. SMH 기초지수는 MVIS US Listed Semiconductor 25(MarketVector)로 다름.",
+  "source_urls": [
+   "https://www.riseetf.co.kr/products/44F3",
+   "https://www.riseetf.co.kr/api/products/attachments/etf/44F3/ (투자설명서 260807)",
+   "https://ishares.com/us/products/239705/SOXX",
+   "https://files.marketvector.com/index-guide/MVSMH_Index_Guide.pdf"
+  ],
+  "evidence": [
+   "기초지수인 ‘NYSE Semiconductor Index 의 원화환산지수(환헤지 안함)’의 수익률과 유사한 수익률을 실현",
+   "판매보수 - / 총보수 0.010 / 지정참가회사 0.001 / 총보수·비용 0.219",
+   "최초설정일 2023-10-20; 상장 2023-10-24",
+   "SOXX: Benchmark Index — NYSE Semiconductor Index"
+  ],
+  "notes": "명칭 이력(KBSTAR→RISE 개명) 공식 문서에서 미확인. 총보수비용 0.219 기간 기준 명시 미확인. 지수 PR/TR 공식 미명시. SMH와 비동일은 MVIS 지수 가이드 파일(MVSMH)·VanEck 팩트시트(Index Ticker MVSMHTR) 검색결과 기준."
+ }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "investing-basics",
+  "version": "1.0.0",
+  "private": true,
+  "description": "적립식 투자·ETF 이해 대시보드 (정적 사이트)",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "prepare-data": "python3 pipeline/prepare_site_data.py",
+    "test:engine": "python3 pipeline/test_ref.py"
+  },
+  "dependencies": {
+    "next": "16.4.5",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "typescript": "^5"
+  }
+}

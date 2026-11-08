@@ -1,0 +1,253 @@
+[
+ {
+  "ticker": "VOO",
+  "official_name": "Vanguard S&P 500 ETF",
+  "issuer": "The Vanguard Group, Inc.",
+  "benchmark_index": "S&P 500 Index",
+  "inception_date": "2010-09-07",
+  "listing_date": null,
+  "listing_exchange": "NYSE Arca",
+  "expense_ratio_pct": 0.03,
+  "expense_ratio_as_of": "2026-04-28 (Vanguard page expenseRatioAsOfDate)",
+  "distribution_frequency": "Quarterly",
+  "structure": "ETF share class of Vanguard 500 Index Fund (open-end mutual fund)",
+  "source_urls": [
+   "https://investor.vanguard.com/investment-products/etfs/profile/voo"
+  ],
+  "evidence": {
+   "official_name": "fundFullName: \"Vanguard S&P 500 ETF\"",
+   "benchmark_index": "strategy: \"...designed to track the performance of the S&P 500 Index\"; benchmarkShortName: \"S&P 500 Index\"",
+   "inception_date": "inceptionDate: \"09/07/2010\" (Vanguard ETF Shares profile)",
+   "listing_exchange": "The fund's ETF Shares are listed for trading on NYSE Arca",
+   "expense_ratio_pct": "expenseRatio: \"0.03%\", expenseRatioAsOfDate: \"04/28/2026\"",
+   "distribution_frequency": "distributionSchedule: \"Quarterly\"",
+   "structure": "Vanguard S&P 500 ETF is an exchange-traded share class of Vanguard 500 Index Fund"
+  },
+  "notes": "listing_date null: Vanguard page gives only the ETF share-class inception date, no separate listing date. Source is Vanguard page JSON (not SEC); not cross-checked against SEC prospectus. Inception 2010-09-07 is the ETF share class date; Vanguard 500 Index Fund itself is older.",
+  "source_type": "official"
+ },
+ {
+  "ticker": "VTI",
+  "official_name": "Vanguard Morningstar Total Stock Market ETF (page fundShortName: Total Stock Market ETF)",
+  "issuer": "The Vanguard Group, Inc.",
+  "benchmark_index": "Morningstar US Total Market Index (performance table compares to 'Spliced Total Stock Market Index')",
+  "inception_date": "2001-05-24",
+  "listing_date": null,
+  "listing_exchange": "NYSE Arca",
+  "expense_ratio_pct": 0.03,
+  "expense_ratio_as_of": "2026-04-28 (Vanguard page expenseRatioAsOfDate)",
+  "distribution_frequency": "Quarterly",
+  "structure": "ETF share class of Vanguard Morningstar Total Stock Market Index Fund (open-end mutual fund)",
+  "source_urls": [
+   "https://investor.vanguard.com/investment-products/etfs/profile/vti"
+  ],
+  "evidence": {
+   "official_name": "fundFullName: \"Vanguard Morningstar Total Stock Market ETF (page fundShortName: Total Stock Market ETF)\"",
+   "benchmark_index": "\"...designed to track the performance of the Morningstar US Total Market Index, which represents approximately 100% of the investable U.S. stock market\"; benchmarkShortName: \"Spliced Total Stock Market Index\"",
+   "inception_date": "inceptionDate: \"05/24/2001\" (Vanguard ETF Shares profile)",
+   "listing_exchange": "The fund's ETF Shares are listed for trading on NYSE Arca",
+   "expense_ratio_pct": "expenseRatio: \"0.03%\", expenseRatioAsOfDate: \"04/28/2026\"",
+   "distribution_frequency": "distributionSchedule: \"Quarterly\"",
+   "structure": "Vanguard Morningstar Total Stock Market ETF is an exchange-traded share class of Vanguard Morningstar Total Stock Market Index Fund"
+  },
+  "notes": "listing_date null: Vanguard page gives only the ETF share-class inception date, no separate listing date. Source is Vanguard page JSON (not SEC); not cross-checked against SEC prospectus. Vanguard page uses new name 'Vanguard Morningstar Total Stock Market ETF'; full legal index name beyond 'Morningstar US Total Market Index' not separately confirmed.",
+  "source_type": "official"
+ },
+ {
+  "ticker": "VUG",
+  "official_name": "Vanguard Morningstar Growth ETF (page fundShortName: Growth ETF)",
+  "issuer": "The Vanguard Group, Inc.",
+  "benchmark_index": "Morningstar US Large Cap Growth Index (performance table compares to 'Spliced Growth Index')",
+  "inception_date": "2004-01-26",
+  "listing_date": null,
+  "listing_exchange": "NYSE Arca",
+  "expense_ratio_pct": 0.03,
+  "expense_ratio_as_of": "2026-04-28 (Vanguard page expenseRatioAsOfDate)",
+  "distribution_frequency": "Quarterly",
+  "structure": "ETF share class of Vanguard Growth Index Fund (page also says 'Vanguard Morningstar Growth Index Fund') (open-end mutual fund)",
+  "source_urls": [
+   "https://investor.vanguard.com/investment-products/etfs/profile/vug"
+  ],
+  "evidence": {
+   "official_name": "fundFullName: \"Vanguard Morningstar Growth ETF (page fundShortName: Growth ETF)\"",
+   "benchmark_index": "\"...designed to track the performance of the Morningstar US Large Cap Growth Index\"; benchmarkShortName: \"Spliced Growth Index\"",
+   "inception_date": "inceptionDate: \"01/26/2004\" (Vanguard ETF Shares profile)",
+   "listing_exchange": "The fund's ETF Shares are listed for trading on NYSE Arca",
+   "expense_ratio_pct": "expenseRatio: \"0.03%\", expenseRatioAsOfDate: \"04/28/2026\"",
+   "distribution_frequency": "distributionSchedule: \"Quarterly\"",
+   "structure": "Vanguard Morningstar Growth ETF is an exchange-traded share class of Vanguard Growth Index Fund"
+  },
+  "notes": "listing_date null: Vanguard page gives only the ETF share-class inception date, no separate listing date. Source is Vanguard page JSON (not SEC); not cross-checked against SEC prospectus. Page text is internally inconsistent on the parent fund name (Vanguard Growth Index Fund vs Vanguard Morningstar Growth Index Fund); both quoted. Full legal index name beyond 'Morningstar US Large Cap Growth Index' not separately confirmed.",
+  "source_type": "official"
+ },
+ {
+  "ticker": "IVV",
+  "official_name": "iShares Core S&P 500 ETF",
+  "issuer": "BlackRock (iShares)",
+  "benchmark_index": "S&P 500 Index",
+  "inception_date": "2000-05-15",
+  "listing_date": null,
+  "listing_exchange": "NYSE Arca",
+  "expense_ratio_pct": 0.03,
+  "expense_ratio_as_of": "current prospectus (as shown on ishares.com 2026-11-08; exact prospectus date not shown)",
+  "distribution_frequency": "Quarterly",
+  "structure": "ETF series of iShares Trust (open-end classification not quoted from source)",
+  "source_urls": [
+   "https://www.ishares.com/us/products/239726/ishares-core-sp-500-etf"
+  ],
+  "evidence": {
+   "official_name": "iShares Core S&P 500 ETF | IVV",
+   "benchmark_index": "Benchmark Index S&P 500 Index",
+   "inception_date": "Fund Inception May 15, 2000",
+   "listing_exchange": "Exchange NYSE Arca",
+   "expense_ratio_pct": "Fees as of current prospectus: Management Fee 0.03% ... Expense Ratio 0.03%",
+   "distribution_frequency": "Distribution Frequency Quarterly",
+   "structure": "document label 'iShares Trust US SP Cap Non Sector-3-31 Prospectus'"
+  },
+  "notes": "listing_date null: iShares page shows only 'Fund Inception'. structure inferred only from 'iShares Trust' prospectus label; SEC prospectus not opened.",
+  "source_type": "official"
+ },
+ {
+  "ticker": "ITOT",
+  "official_name": "iShares Core S&P Total U.S. Stock Market ETF",
+  "issuer": "BlackRock (iShares)",
+  "benchmark_index": "S&P Total Market Index (TMI)",
+  "inception_date": "2004-01-20",
+  "listing_date": null,
+  "listing_exchange": "NYSE Arca",
+  "expense_ratio_pct": 0.03,
+  "expense_ratio_as_of": "current prospectus (as shown on ishares.com 2026-11-08; exact prospectus date not shown)",
+  "distribution_frequency": "Quarterly",
+  "structure": "ETF series of iShares Trust (open-end classification not quoted from source)",
+  "source_urls": [
+   "https://www.ishares.com/us/products/239724/ishares-core-sp-total-us-stock-market-etf"
+  ],
+  "evidence": {
+   "official_name": "The iShares Core S&P Total U.S. Stock Market ETF seeks to track an index composed of U.S. stocks across market capitalizations",
+   "benchmark_index": "Benchmark Index S&P Total Market Index (TMI)",
+   "inception_date": "Fund Inception Jan 20, 2004",
+   "listing_exchange": "Exchange NYSE Arca",
+   "expense_ratio_pct": "Fees as of current prospectus: Management Fee 0.03% ... Expense Ratio 0.03%; header 'Expense Ratio: Fees as stated in the prospectus 0.03%'",
+   "distribution_frequency": "Distribution Frequency Quarterly",
+   "structure": "document label 'iShares Trust US SP Cap Non Sector-3-31 Prospectus'"
+  },
+  "notes": "listing_date null: not shown separately. Benchmark shown as 'S&P Total Market Index (TMI)' on page; fully formal index name not confirmed in prospectus. structure inferred from 'iShares Trust' label only.",
+  "source_type": "official"
+ },
+ {
+  "ticker": "SPY",
+  "official_name": "SPDR S&P 500 ETF Trust (page: State Street SPDR S&P 500 ETF Trust)",
+  "issuer": "State Street Global Advisors (Sponsor: PDR Services LLC; Trustee: State Street Global Advisors Trust Company)",
+  "benchmark_index": "S&P 500 Index",
+  "inception_date": "1993-01-22",
+  "listing_date": "1993-01-22",
+  "listing_exchange": "NYSE Arca",
+  "expense_ratio_pct": 0.0945,
+  "expense_ratio_as_of": "Prospectus dated 2026-01-26",
+  "distribution_frequency": "Quarterly",
+  "structure": "unit investment trust",
+  "source_urls": [
+   "https://www.ssga.com/us/en/intermediary/etfs/spdr-sp-500-etf-trust-spy",
+   "https://www.sec.gov/Archives/edgar/data/884394/000119312526022316/d77353d485bpos.htm"
+  ],
+  "evidence": {
+   "official_name": "SPDR S&P 500 ETF Trust (\"SPY\" or the \"Trust\") ... (A Unit Investment Trust)",
+   "benchmark_index": "Benchmark S&P 500 Index (ssga.com)",
+   "inception_date": "The Trust commenced operations on January 22, 1993 (prospectus)",
+   "listing_date": "Listing Date Jan 22 1993 (ssga.com)",
+   "listing_exchange": "Principal U.S. Listing Exchange ... NYSE Arca, Inc. under the symbol \"SPY\"",
+   "expense_ratio_pct": "Ordinary operating expenses ... currently being accrued at an annual rate of 0.0945%; Total 0.0945 %",
+   "distribution_frequency": "Payments of dividends are made quarterly",
+   "structure": "The Trust is a unit investment trust"
+  },
+  "notes": "Expense ratio 0.0945% (2 sig. digits would be 0.09). Trustee fee waiver cap until 2027-02-01.",
+  "source_type": "official+SEC"
+ },
+ {
+  "ticker": "QQQ",
+  "official_name": "Invesco QQQ Trust, Series 1 (marketed as Invesco QQQ ETF)",
+  "issuer": "Invesco Capital Management LLC (Sponsor/Adviser)",
+  "benchmark_index": "Nasdaq-100 Index®",
+  "inception_date": "1999-03-10",
+  "listing_date": null,
+  "listing_exchange": "The Nasdaq Stock Market LLC",
+  "expense_ratio_pct": 0.18,
+  "expense_ratio_as_of": "Prospectus dated 2025-12-19/22 (post-reclassification); invesco.com also states 0.18%",
+  "distribution_frequency": "Quarterly",
+  "structure": "open-end management investment company (reclassified from unit investment trust after market close 2025-12-19)",
+  "source_urls": [
+   "https://www.sec.gov/Archives/edgar/data/1067839/000110465925123273/tm2529177d1_485bpos.htm",
+   "https://www.invesco.com/qqq-etf/en/home.html",
+   "https://www.sec.gov/Archives/edgar/data/1067839/000110465926052973/tm2612890d3_497k.htm"
+  ],
+  "evidence": {
+   "official_name": "The Invesco QQQ Trust SM, Series 1 (the \"Fund\" or \"Trust\") seeks to track ... Nasdaq-100 Index®",
+   "benchmark_index": "seeks to track the investment results, before fees and expenses, of the Nasdaq-100 Index® (the \"Underlying Index\")",
+   "inception_date": "Data is as of Invesco QQQ ETF inception date of March 10, 1999 (invesco.com); Trust organized March 4, 1999",
+   "listing_exchange": "Shares of the Trust are listed on The Nasdaq Stock Market LLC",
+   "expense_ratio_pct": "Management Fees 0.18 % Other Expenses None Total Annual Fund Operating Expenses 0.18 %",
+   "distribution_frequency": "dividends from net investment income, if any, are declared and paid quarterly by the Fund",
+   "structure": "effective after market close on December 19, 2025, the Fund was reclassified as an open-end management investment company. Prior ... operated as a unit investment trust"
+  },
+  "notes": "listing_date null: only 'inception date March 10, 1999' given; not labeled as listing date. Structure changed 2025-12-19 (UIT -> open-end). Nasdaq-100 methodology changed 2026-05-01 (497K).",
+  "source_type": "official+SEC"
+ },
+ {
+  "ticker": "QQQM",
+  "official_name": "Invesco NASDAQ 100 ETF",
+  "issuer": "Invesco Capital Management LLC (Invesco Exchange-Traded Fund Trust II)",
+  "benchmark_index": "Nasdaq-100 Index®",
+  "inception_date": "2020-10-13",
+  "listing_date": "2020-10-13",
+  "listing_exchange": "The Nasdaq Stock Market LLC",
+  "expense_ratio_pct": 0.15,
+  "expense_ratio_as_of": "Prospectus filed 2025-12-18; N-CSR FY ended 2026-08-31 shows costs 0.15%",
+  "distribution_frequency": "Quarterly",
+  "structure": "open-end ETF (series of Invesco Exchange-Traded Fund Trust II, an open-end management investment company)",
+  "source_urls": [
+   "https://www.sec.gov/Archives/edgar/data/1378872/000110465925122454/tm2532525d1_485bpos.htm",
+   "https://www.sec.gov/Archives/edgar/data/1378872/000119312526450665/8df3b65fb4e0d1a.htm",
+   "https://www.invesco.com/us/en/financial-products/etfs/invesco-nasdaq-100-etf.html"
+  ],
+  "evidence": {
+   "official_name": "The Invesco NASDAQ 100 ETF (the \"Fund\") seeks to track the investment results (before fees and expenses) of the Nasdaq-100 Index®",
+   "benchmark_index": "same sentence",
+   "inception_date": "Fund Inception (October 13, 2020, the first day of trading on the exchange)",
+   "listing_date": "same: first day of trading on the exchange",
+   "listing_exchange": "QQQM | The Nasdaq Stock Market LLC (annual shareholder report 2026-08-31)",
+   "expense_ratio_pct": "Management Fees 0.15 % Other Expenses None Total Annual Fund Operating Expenses 0.15; annual report: $17 0.15 %",
+   "distribution_frequency": "declared and paid quarterly by the Fund",
+   "structure": "The Trust is an open-end management investment company registered under the 1940 Act"
+  },
+  "notes": "Quarterly distribution sentence confirmed in the QQQM-containing prospectus text (Dec 2025 485BPOS) per search of the Trust II prospectus; Sep-2026 prospectus checked for a different fund. Inception date = first trading day per prospectus footnote.",
+  "source_type": "official+SEC"
+ },
+ {
+  "ticker": "SCHG",
+  "official_name": "Schwab U.S. Large-Cap Growth ETF",
+  "issuer": "Charles Schwab Investment Management / Schwab Asset Management (Schwab Strategic Trust)",
+  "benchmark_index": "Dow Jones U.S. Large-Cap Growth Total Stock Market Index",
+  "inception_date": "2009-12-11",
+  "listing_date": null,
+  "listing_exchange": "NYSE Arca",
+  "expense_ratio_pct": 0.04,
+  "expense_ratio_as_of": "Summary prospectus 2026-02-27; N-CSR FY ended 2026-08-31 also 0.04%",
+  "distribution_frequency": "Quarterly",
+  "structure": "ETF series of Schwab Strategic Trust (open-end management investment company; term not quoted)",
+  "source_urls": [
+   "https://www.sec.gov/Archives/edgar/data/1454889/000110465926020693/tm266454-3_497k.htm",
+   "https://www.sec.gov/Archives/edgar/data/1454889/000119312526443553/d27602dncsr.htm"
+  ],
+  "evidence": {
+   "official_name": "Schwab U.S. Large-Cap Growth ETF Ticker Symbol: SCHG",
+   "benchmark_index": "track as closely as possible, before fees and expenses, the total return of the Dow Jones U.S. Large-Cap Growth Total Stock Market Index",
+   "inception_date": "Fund: Schwab U.S. Large-Cap Growth ETF ( 12/11/2009 ) (N-CSR)",
+   "listing_exchange": "Principal U.S. Listing Exchange: NYSE Arca, Inc.",
+   "expense_ratio_pct": "Management fees 0.04 Other expenses 0.00 Total annual fund operating expenses 0.04",
+   "distribution_frequency": "The funds make distributions from net investment income, if any, quarterly (N-CSR notes covering the Schwab U.S. Equity ETFs)",
+   "structure": "N-CSR 'Item 7 - Financial Statements ... for Open-End Management Investment Companies'"
+  },
+  "notes": "listing_date null: N-CSR gives only fund inception date. schwabassetmanagement.com returned 403, so only SEC filings used. Distribution frequency taken from combined N-CSR note, not SCHG-specific prospectus text.",
+  "source_type": "SEC"
+ }
+]

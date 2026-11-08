@@ -1,0 +1,8 @@
+node_modules
+.next
+out
+next-env.d.ts
+pipeline/raw
+pipeline/dataset2.json
+.DS_Store
+*.tsbuildinfo

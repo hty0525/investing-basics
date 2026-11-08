@@ -1,0 +1,336 @@
+{
+ "as_of_retrieved": "2026-11-08",
+ "tickers": {
+  "SCHD": {
+   "official_name": "Schwab U.S. Dividend Equity ETF",
+   "issuer": "Schwab Asset Management (Charles Schwab Investment Management, Inc.)",
+   "benchmark_index": "Dow Jones U.S. Dividend 100 Index",
+   "inception_date": "2011-10-20",
+   "listing_date": null,
+   "listing_exchange": null,
+   "expense_ratio_pct": 0.06,
+   "expense_ratio_as_of": "2026-02-27 (summary prospectus); schwabassetmanagement.com showed 0.060% in search-cache of the product page",
+   "distribution_frequency": null,
+   "strategy_notes": null,
+   "fixed_income": null,
+   "split_events": [
+    {
+     "date_effective": "2024-10-10",
+     "ratio": "3-for-1 forward split",
+     "record_date": "2024-10-09",
+     "post_split_trading_start": "2024-10-11",
+     "source": "https://www.schwabassetmanagement.com/products/schd"
+    }
+   ],
+   "source_urls": [
+    "https://www.sec.gov/Archives/edgar/data/1454889/000110465926020681/tm266454-15_497k.htm",
+    "https://www.schwabassetmanagement.com/products/schd"
+   ],
+   "evidence": [
+    "SEC SP 2026-02-27: 'Management fees 0.06 ... Total annual fund operating expenses 0.06'",
+    "SEC SP: 'track as closely as possible ... the total return of the Dow Jones U.S. Dividend 100 Index'",
+    "Schwab page: 'Fund inception date is 10/20/2011.'",
+    "Schwab page: 'Effective October 10, 2024, this ETF underwent a 3-for-1 share split... record as of close October 9, 2024 ... post-split price on October 11, 2024.'"
+   ],
+   "notes": [
+    "Schwab site returns 403 to direct fetch; values taken from official-page content returned via search index (not live fetch) and SEC summary prospectus.",
+    "listing_exchange null: SP says only 'listed on national securities exchanges'. listing_date null.",
+    "distribution_frequency null: no official source retrieved (Schwab distribution CSV/schedule blocked 403). Third-party investing.com shows quarterly ex-dates (secondary, not recorded as value)."
+   ]
+  },
+  "VYM": {
+   "official_name": "Vanguard High Dividend Yield ETF",
+   "issuer": "Vanguard",
+   "benchmark_index": "FTSE High Dividend Yield Index",
+   "inception_date": "2006-11-10",
+   "listing_date": null,
+   "listing_exchange": "NYSE Arca",
+   "expense_ratio_pct": 0.04,
+   "expense_ratio_as_of": "2026-02-27",
+   "distribution_frequency": "Quarterly",
+   "strategy_notes": null,
+   "fixed_income": null,
+   "split_events": [],
+   "source_urls": [
+    "https://investor.vanguard.com/investment-products/etfs/profile/vym"
+   ],
+   "evidence": [
+    "Vanguard page JSON: inceptionDate 11/10/2006; expenseRatio 0.04% (expenseRatioAsOfDate 2026-02-27); distributionSchedule Quarterly"
+   ],
+   "notes": [
+    "Vanguard page embedded JSON, fetched 2026-11-08. listing_date not separately stated (null). Vanguard 'inception date' is ETF-share inception shown on page.",
+    "Exchange per page text: 'ETF Shares are listed for trading on NYSE Arca'"
+   ]
+  },
+  "VIG": {
+   "official_name": "Vanguard Dividend Appreciation ETF",
+   "issuer": "Vanguard",
+   "benchmark_index": "S&P U.S. Dividend Growers Index (spliced; NASDAQ US Dividend Achievers Select Index through 2021-09-19)",
+   "inception_date": "2006-04-21",
+   "listing_date": null,
+   "listing_exchange": "NYSE Arca",
+   "expense_ratio_pct": 0.04,
+   "expense_ratio_as_of": "2026-05-28",
+   "distribution_frequency": "Quarterly",
+   "strategy_notes": null,
+   "fixed_income": null,
+   "split_events": [],
+   "source_urls": [
+    "https://investor.vanguard.com/investment-products/etfs/profile/vig"
+   ],
+   "evidence": [
+    "Vanguard page JSON: inceptionDate 04/21/2006; expenseRatio 0.04% (expenseRatioAsOfDate 2026-05-28); distributionSchedule Quarterly"
+   ],
+   "notes": [
+    "Vanguard page embedded JSON, fetched 2026-11-08. listing_date not separately stated (null). Vanguard 'inception date' is ETF-share inception shown on page.",
+    "Exchange per page text: 'ETF Shares are listed for trading on NYSE Arca'"
+   ]
+  },
+  "VT": {
+   "official_name": "Vanguard Total World Stock ETF",
+   "issuer": "Vanguard",
+   "benchmark_index": "FTSE Global All Cap Index (spliced; FTSE All-World Index through 2011-12-18)",
+   "inception_date": "2008-06-24",
+   "listing_date": null,
+   "listing_exchange": "NYSE Arca",
+   "expense_ratio_pct": 0.06,
+   "expense_ratio_as_of": "2026-02-27",
+   "distribution_frequency": "Quarterly",
+   "strategy_notes": null,
+   "fixed_income": null,
+   "split_events": [],
+   "source_urls": [
+    "https://investor.vanguard.com/investment-products/etfs/profile/vt"
+   ],
+   "evidence": [
+    "Vanguard page JSON: inceptionDate 06/24/2008; expenseRatio 0.06% (expenseRatioAsOfDate 2026-02-27); distributionSchedule Quarterly"
+   ],
+   "notes": [
+    "Vanguard page embedded JSON, fetched 2026-11-08. listing_date not separately stated (null). Vanguard 'inception date' is ETF-share inception shown on page.",
+    "Exchange per page text: 'ETF Shares are listed for trading on NYSE Arca'"
+   ]
+  },
+  "BND": {
+   "official_name": "Vanguard Total Bond Market ETF",
+   "issuer": "Vanguard",
+   "benchmark_index": "Bloomberg U.S. Aggregate Float Adjusted Index (Bloomberg U.S. Aggregate Bond Index through 2009-12-31)",
+   "inception_date": "2007-04-03",
+   "listing_date": null,
+   "listing_exchange": "Nasdaq",
+   "expense_ratio_pct": 0.03,
+   "expense_ratio_as_of": "2026-04-28",
+   "distribution_frequency": "Monthly",
+   "strategy_notes": null,
+   "fixed_income": {
+    "average_duration": "5.7 years",
+    "average_maturity": "8.3 years",
+    "as_of": "2026-09-30",
+    "benchmark_values": {
+     "duration": "5.7 years (2026-10-31)",
+     "maturity": "8.2 years (2026-09-30 / 10-31)"
+    },
+    "yield_to_maturity_pct": 5.6
+   },
+   "split_events": [],
+   "source_urls": [
+    "https://investor.vanguard.com/investment-products/etfs/profile/bnd"
+   ],
+   "evidence": [
+    "Vanguard page JSON: inceptionDate 04/03/2007; expenseRatio 0.03% (expenseRatioAsOfDate 2026-04-28); distributionSchedule Monthly",
+    "averageDuration '5.7 years', averageMaturity '8.3 years', asOf 09/30/2026"
+   ],
+   "notes": [
+    "Vanguard page embedded JSON, fetched 2026-11-08. listing_date not separately stated (null). Vanguard 'inception date' is ETF-share inception shown on page.",
+    "Exchange per page text: 'ETF Shares are listed for trading on Nasdaq'"
+   ]
+  },
+  "DGRO": {
+   "official_name": "iShares Core Dividend Growth ETF",
+   "issuer": "iShares (BlackRock)",
+   "benchmark_index": "Morningstar US Dividend Growth Index",
+   "inception_date": "2014-06-10",
+   "listing_date": null,
+   "listing_exchange": "NYSE Arca",
+   "expense_ratio_pct": 0.08,
+   "expense_ratio_as_of": "page 'Fees as stated in the prospectus', page data as of 2026-11-06 (exact fee-effective date not shown)",
+   "distribution_frequency": "Quarterly",
+   "strategy_notes": null,
+   "fixed_income": null,
+   "split_events": [],
+   "source_urls": [
+    "https://www.ishares.com/us/products/264623/ishares-core-dividend-growth-etf"
+   ],
+   "evidence": [
+    "iShares page Key Facts: Fund Inception 2007-04-03; Expense Ratio 0.08% 'Fees as stated in the prospectus'; Benchmark Morningstar US Dividend Growth Index; Exchange NYSE Arca; Distribution Frequency Quarterly"
+   ],
+   "notes": [
+    "Fetched 2026-11-08 via curl. listing_date null (only 'Fund Inception' shown)."
+   ]
+  },
+  "AGG": {
+   "official_name": "iShares Core U.S. Aggregate Bond ETF",
+   "issuer": "iShares (BlackRock)",
+   "benchmark_index": "Bloomberg US Aggregate Bond Index",
+   "inception_date": "2003-09-22",
+   "listing_date": null,
+   "listing_exchange": "NYSE Arca",
+   "expense_ratio_pct": 0.03,
+   "expense_ratio_as_of": "page 'Fees as stated in the prospectus', page data as of 2026-11-06 (exact fee-effective date not shown)",
+   "distribution_frequency": "Monthly",
+   "strategy_notes": null,
+   "fixed_income": {
+    "effective_duration": "5.73 yrs",
+    "weighted_avg_maturity": "8.16 yrs",
+    "as_of": "2026-11-05",
+    "avg_ytm_pct": 5.16
+   },
+   "split_events": [],
+   "source_urls": [
+    "https://www.ishares.com/us/products/239458/ishares-core-total-us-bond-market-etf"
+   ],
+   "evidence": [
+    "iShares page Key Facts: Fund Inception 2007-04-03; Expense Ratio 0.03% 'Fees as stated in the prospectus'; Benchmark Bloomberg US Aggregate Bond Index; Exchange NYSE Arca; Distribution Frequency Monthly"
+   ],
+   "notes": [
+    "Fetched 2026-11-08 via curl. listing_date null (only 'Fund Inception' shown)."
+   ]
+  },
+  "SGOV": {
+   "official_name": "iShares 0-3 Month Treasury Bond ETF",
+   "issuer": "iShares (BlackRock)",
+   "benchmark_index": "ICE 0-3 Month US Treasury Securities Index (USD)",
+   "inception_date": "2020-05-26",
+   "listing_date": null,
+   "listing_exchange": "NYSE",
+   "expense_ratio_pct": 0.09,
+   "expense_ratio_as_of": "page 'Fees as stated in the prospectus', page data as of 2026-11-06 (exact fee-effective date not shown)",
+   "distribution_frequency": "Monthly",
+   "strategy_notes": null,
+   "fixed_income": {
+    "effective_duration": "0.11 yrs",
+    "weighted_avg_maturity": "0.12 yrs",
+    "as_of": "2026-11-05",
+    "avg_ytm_pct": 3.97
+   },
+   "split_events": [],
+   "source_urls": [
+    "https://www.ishares.com/us/products/314116/ishares-0-3-month-treasury-bond-etf"
+   ],
+   "evidence": [
+    "iShares page Key Facts: Fund Inception 2007-04-03; Expense Ratio 0.09% 'Fees as stated in the prospectus'; Benchmark ICE 0-3 Month US Treasury Securities Index (USD); Exchange NYSE; Distribution Frequency Monthly"
+   ],
+   "notes": [
+    "Fetched 2026-11-08 via curl. listing_date null (only 'Fund Inception' shown)."
+   ]
+  },
+  "SOXX": {
+   "official_name": "iShares Semiconductor ETF",
+   "issuer": "iShares (BlackRock)",
+   "benchmark_index": "NYSE Semiconductor Index",
+   "inception_date": "2001-07-10",
+   "listing_date": null,
+   "listing_exchange": "NASDAQ",
+   "expense_ratio_pct": 0.33,
+   "expense_ratio_as_of": "page 'Fees as stated in the prospectus', page data as of 2026-11-06 (exact fee-effective date not shown)",
+   "distribution_frequency": "Quarterly",
+   "strategy_notes": null,
+   "fixed_income": null,
+   "split_events": [],
+   "source_urls": [
+    "https://www.ishares.com/us/products/239705/ishares-phlx-semiconductor-etf"
+   ],
+   "evidence": [
+    "iShares page Key Facts: Fund Inception 2007-04-03; Expense Ratio 0.33% 'Fees as stated in the prospectus'; Benchmark NYSE Semiconductor Index; Exchange NASDAQ; Distribution Frequency Quarterly"
+   ],
+   "notes": [
+    "Fetched 2026-11-08 via curl. listing_date null (only 'Fund Inception' shown).",
+    "Page 'Fund Inception Jul 10, 2001'. Benchmark on page is 'NYSE Semiconductor Index' (page Bloomberg ticker ICESEMIT)."
+   ]
+  },
+  "JEPI": {
+   "official_name": "JPMorgan Equity Premium Income ETF",
+   "issuer": "J.P. Morgan Asset Management (J.P. Morgan Exchange-Traded Fund Trust)",
+   "benchmark_index": "active, no index; actively managed. SP regulatory index: S&P 500 Index; additional comparison: ICE BofA 3-Month US Treasury Bill Index",
+   "inception_date": "2020-05-20",
+   "listing_date": null,
+   "listing_exchange": "NYSE Arca",
+   "expense_ratio_pct": 0.35,
+   "expense_ratio_as_of": "Summary Prospectus dated 2026-11-01",
+   "distribution_frequency": "Monthly (target: 'monthly distributions at a relatively stable level')",
+   "strategy_notes": "Actively managed portfolio of equity securities (primarily US large cap) plus equity-linked notes (ELNs) that sell call options with exposure to the S&P 500 Index; aims at lower volatility than broad US large cap market and incremental income; invests >=80% in equities incl. ELNs.",
+   "fixed_income": null,
+   "split_events": [],
+   "source_urls": [
+    "https://www.sec.gov/Archives/edgar/data/1485894/000119312526425888/d380375d497k.htm",
+    "https://am.jpmorgan.com/us/en/asset-management/adv/products/jpmorgan-equity-premium-income-etf-etf-shares-46641q332"
+   ],
+   "evidence": [
+    "SP: 'Management Fees 0.35% Total Annual Fund Operating Expenses 0.35'",
+    "SP: 'seeks to achieve this objective (1) by creating an actively managed portfolio of equity securities and (2) through equity-linked notes (ELNs), by selling call options'",
+    "SP: 'seeks ... to provide monthly distributions at a relatively stable level'",
+    "JPM page: 'Fund performance inception: 5/20/2020'",
+    "SP: 'Shares are listed for trading on the NYSE Arca, Inc.'"
+   ],
+   "notes": [
+    "inception = JPM 'fund performance inception'; listing_date null. Expense ratio = management fee, no waiver stated in SP."
+   ]
+  },
+  "JEPQ": {
+   "official_name": "JPMorgan Nasdaq Equity Premium Income ETF",
+   "issuer": "J.P. Morgan Asset Management (J.P. Morgan Exchange-Traded Fund Trust)",
+   "benchmark_index": "active, no index; actively managed. SP: S&P 500 Index is regulatory index; Nasdaq-100 Index and ICE BofA 3-Month US Treasury Bill Index are additional indices (more representative of universe)",
+   "inception_date": "2022-05-03",
+   "listing_date": null,
+   "listing_exchange": "The NASDAQ Stock Market LLC",
+   "expense_ratio_pct": 0.35,
+   "expense_ratio_as_of": "Summary Prospectus dated 2026-11-01",
+   "distribution_frequency": "Monthly (target: 'monthly distributions at a relatively stable level')",
+   "strategy_notes": "Actively managed portfolio of equity securities comprised significantly of Nasdaq-100 Index constituents plus equity-linked notes (ELNs) selling call options with exposure to the Nasdaq-100 Index; aims to capture a significant portion of Index returns with lower volatility and incremental income.",
+   "fixed_income": null,
+   "split_events": [],
+   "source_urls": [
+    "https://www.sec.gov/Archives/edgar/data/1485894/000119312526425897/d351504d497k.htm",
+    "https://am.jpmorgan.com/us/en/asset-management/adv/products/jpmorgan-nasdaq-equity-premium-income-etf-etf-shares-46654q203"
+   ],
+   "evidence": [
+    "SP: 'Management Fees 0.35% Total Annual Fund Operating Expenses 0.35'",
+    "SP: 'seeks to achieve this objective (1) by creating an actively managed portfolio of equity securities and (2) through equity-linked notes (ELNs), by selling call options'",
+    "SP: 'seeks ... to provide monthly distributions at a relatively stable level'",
+    "JPM page: 'Fund performance inception: 5/3/2022'; SP: 'Shares are listed for trading on The NASDAQ Stock Market LLC'"
+   ],
+   "notes": [
+    "inception = JPM 'fund performance inception'; listing_date null. Expense ratio = management fee, no waiver stated in SP."
+   ]
+  },
+  "SMH": {
+   "official_name": "VanEck Semiconductor ETF",
+   "issuer": "VanEck (Van Eck Associates Corporation)",
+   "benchmark_index": "MVIS US Listed Semiconductor 25 Index (MVSMHTR)",
+   "inception_date": "2011-12-20",
+   "listing_date": null,
+   "listing_exchange": "The NASDAQ Stock Market LLC",
+   "expense_ratio_pct": 0.35,
+   "expense_ratio_as_of": "2026-11-06 (page; fee note: offering cost payment through 2027-02-01)",
+   "distribution_frequency": null,
+   "strategy_notes": null,
+   "fixed_income": null,
+   "split_events": [],
+   "source_urls": [
+    "https://www.vaneck.com/us/en/investments/semiconductor-etf-smh/overview/",
+    "https://www.sec.gov/Archives/edgar/data/1137360/000113736026000917/ck0001137360-20260923.htm"
+   ],
+   "evidence": [
+    "VanEck page: 'Total Expense Ratio ... 0.35 %  Inception Date 12/20/2011'",
+    "VanEck page: 'seeks to replicate ... the MVIS® US Listed Semiconductor 25 Index (MVSMHTR)'",
+    "SEC SAI table: 'Semiconductor ETF The NASDAQ Stock Market LLC SMH'"
+   ],
+   "notes": [
+    "distribution_frequency null: not stated in retrieved sources (VanEck page lists tax/distribution doc 'Annually' as document frequency only).",
+    "listing_date null."
+   ]
+  }
+ },
+ "general_notes": [
+  "web_extract unavailable; fetched via curl/SEC EDGAR/search index. Schwab site returns 403 to direct fetch."
+ ]
+}
