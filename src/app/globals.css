@@ -78,3 +78,18 @@ details summary{cursor:pointer;color:var(--ac)}
 .action{display:flex;flex-direction:column;gap:2px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;text-decoration:none;color:var(--tx);min-height:92px}
 .action:hover{border-color:var(--ac);background:var(--card2);text-decoration:none}.action span{font-size:26px;line-height:1.2}.action div{display:flex;flex-direction:column}.action b{font-size:17px}.action small{color:var(--mut);font-size:13px}
 @media (max-width:720px){.actions{grid-template-columns:1fr}.action{flex-direction:row;align-items:center;gap:12px;min-height:64px;padding:12px 14px}.action span{font-size:28px}.action b{font-size:16px;display:block}.action small{display:block}.action div{display:flex;flex-direction:column}}
+
+
+/* ETF price chart: keyboard, mouse and touch price inspection */
+.spark-interactive svg{cursor:crosshair;touch-action:pan-y;outline-offset:3px}
+.spark-interactive svg:focus-visible{outline:2px solid var(--ac)}
+.spark-readout{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 12px;margin-top:8px;padding:8px 12px;background:var(--card2);border:1px solid var(--line);border-radius:10px;font-variant-numeric:tabular-nums}
+.spark-readout span{font-size:13px;color:var(--mut)}
+.spark-readout strong{font-size:17px}
+.spark-help{display:inline}
+@media(max-width:720px){.spark-readout strong{font-size:15px}}
+
+/* Button-based ETF filters and simulator duration chips share link chip styling. */
+.chips button{background:var(--card2);border:1px solid var(--line);color:var(--mut);padding:5px 12px;border-radius:99px;font:inherit;font-size:13px;cursor:pointer}
+.chips button.on,.chips button:hover{background:var(--ac);color:#06101f;border-color:var(--ac)}
+.chips button:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
