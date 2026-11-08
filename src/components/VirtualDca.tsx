@@ -1,5 +1,6 @@
 'use client';
 import { useMemo, useState } from 'react';
+import MoneyInput from './MoneyInput';
 const PATHS: Record<string, [string, (m: number) => number]> = {
   rise: ['꾸준한 상승 (가정)', (m) => 1 + 0.012 * m + 0.03 * Math.sin(m / 3)],
   dip: ['하락 후 반등 (가정)', (m) => (m < 12 ? 1 - 0.025 * m : 0.7 + 0.03 * (m - 12))],
@@ -25,7 +26,7 @@ export default function VirtualDca() {
       <h3 style={{ margin: '8px 0' }}>가상 가격 경로로 보는 “적립식 vs 일시금”</h3>
       <div className="grid g3">
         <div><label htmlFor="vp">가상 경로</label><select id="vp" value={p} onChange={(e) => setP(e.target.value)}>{Object.entries(PATHS).map(([k, v]) => <option key={k} value={k}>{v[0]}</option>)}</select></div>
-        <div><label htmlFor="va">월 적립금 (원)</label><input id="va" type="number" step={100000} value={a} onChange={(e) => setA(+e.target.value)} /></div>
+        <div><label htmlFor="va">월 적립금 (원)</label><MoneyInput id="va" value={a} onChange={(n) => setA(n || 1)} /></div>
         <div><label htmlFor="vm">기간 (개월)</label><input id="vm" type="number" min={6} max={120} value={M} onChange={(e) => setM(Math.min(120, Math.max(6, +e.target.value)))} /></div>
       </div>
       <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label="가상 경로 적립식 대 일시금 그래프" style={{ width: '100%', height: 220, marginTop: 10 }}>

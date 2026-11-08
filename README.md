@@ -5,6 +5,7 @@
 
 - 사이트: https://hty0525.github.io/investing-basics/
 - Next.js(App Router) **정적 export(SSG)** → 서버 런타임 없음, GitHub Pages 무료 호스팅
+- 간단하게/상세하게 보기 전환(전역), 학습 경로, 가정 계산기, 과거 롤링 결과(최악 포함), 모바일 대응(하단 메뉴)
 - SEO: 페이지별 title/description/canonical/OG, `sitemap.xml`, `robots.txt`, JSON-LD(Article·FAQPage·BreadcrumbList·WebSite·WebApplication·DefinedTermSet), 상품 41 + 비교 10 + 개념 10 정적 페이지
 
 ## 구조

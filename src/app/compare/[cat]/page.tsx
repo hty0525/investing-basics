@@ -44,12 +44,12 @@ export default async function ComparePage({ params }: { params: Promise<{ cat: s
       <Disclaimer />
       <h2>같은 기간 성과 비교</h2>
       <p className="mut">선택한 상품이 모두 거래된 공통 기간만 동일기간 비교로 표시합니다. 현지통화(USD/KRW) 수익률끼리 순위를 매기지 않으며, 원화 총수익률은 매수일·분배일 환율을 적용했습니다.</p>
-      <Table head={['ETF', '상장', '통화', '가격수익률(현지)', '총수익률(현지)', '원화 총수익률', '가격 MDD', '연환산 변동성', '총보수']} rows={rows} caption={`공통 기간 ${start} ~ ${end} · 세전 · 분배금 배당락일 재투자 가정`} />
+      <Table head={['ETF', '상장', '통화', '가격수익률(현지)', '총수익률(현지)', '원화 총수익률', '가격 MDD', '연환산 변동성', '총보수']} detail={[1, 2, 7]} rows={rows} caption={`공통 기간 ${start} ~ ${end} · 세전 · 분배금 배당락일 재투자 가정`} />
       <p className="mut">{c.note}</p>
       <h2>역할과 양면성</h2>
       <Table head={['ETF', '기대 역할', '장점', '주의점']} rows={all.map((k) => [<Link key={k} href={`/etf/${k.toLowerCase()}/`}>{label(k)}</Link>, c.role, c.pro, c.con])} />
-      <h2>비교하는 방법</h2>
-      <ul>
+      <h2 className="detail-only">비교하는 방법</h2>
+      <ul className="detail-only">
         <li>같은 기간인지 먼저 확인합니다(상장일이 다르면 가장 늦은 상장일부터).</li>
         <li>가격수익률과 총수익률(분배금 포함)을 구분합니다. <Link href="/concepts/price-vs-total-return/">자세히</Link></li>
         <li>환율의 영향을 따로 확인합니다. <Link href="/concepts/fx-decomposition/">자세히</Link></li>

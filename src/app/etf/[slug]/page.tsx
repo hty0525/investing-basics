@@ -13,6 +13,7 @@ import Table from '@/components/Table';
 import Spark from '@/components/Spark';
 import FactTable from '@/components/FactTable';
 import Disclaimer from '@/components/Disclaimer';
+import { rolling } from '@/lib/rolling';
 
 export const dynamicParams = false;
 export function generateStaticParams() { return KEYS.map((k) => ({ slug: k.toLowerCase() })); }
@@ -32,6 +33,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function EtfPage({ params }: { params: Promise<{ slug: string }> }) {
   const k = keyOf((await params).slug); const p = P(k), f = FACT(k), c = catOf(k);
   const st = productStats(k); const lp = lastPrice(k); const ser = loadSeries(k);
+  const roll = rolling(k, [3, 5, 10]);
   const peers = [...c.us, ...c.kr].filter((x) => x !== k);
   const divs = recentDivs(k, 8);
   const hedged = isKR(k) && /\(H\)|\(합성 H\)/.test(p.name ?? '');
@@ -74,24 +76,33 @@ export default async function EtfPage({ params }: { params: Promise<{ slug: stri
       <div className="grid g4">
         <div className="kpi"><div className="l">최대낙폭(가격, {p.currency})</div><div className="v bad">{pct(st.all.mdd.mdd)}</div><div className="s">{st.all.mdd.peakDate} → {st.all.mdd.troughDate}</div></div>
         <div className="kpi"><div className="l">최고가 회복</div><div className="v">{st.all.mdd.recoveryDate ?? '기간 내 미회복'}</div><div className="s">{st.all.mdd.recoveryDays ? `저점 후 ${st.all.mdd.recoveryDays}일` : ''}</div></div>
-        <div className="kpi"><div className="l">연환산 변동성</div><div className="v">{pct(st.vol)}</div><div className="s">일간 로그수익률 기준</div></div>
-        <div className="kpi"><div className="l">원화 환산 최대낙폭</div><div className="v bad">{st.krwMdd ? pct(st.krwMdd.mdd) : '자료 부족'}</div><div className="s">{st.krwMdd ? `${st.krwStart}~ 기준` : ''}</div></div>
+        <div className="kpi detail-only"><div className="l">연환산 변동성</div><div className="v">{pct(st.vol)}</div><div className="s">일간 로그수익률 기준</div></div>
+        <div className="kpi detail-only"><div className="l">원화 환산 최대낙폭</div><div className="v bad">{st.krwMdd ? pct(st.krwMdd.mdd) : '자료 부족'}</div><div className="s">{st.krwMdd ? `${st.krwStart}~ 기준` : ''}</div></div>
       </div>
-      {st.month ? <p className="mut">원화 기준 최악 월간 수익률 {st.month.worstMonth ? `${pct(st.month.worstMonth.r)} (${st.month.worstMonth.d.slice(0, 7)})` : '자료 부족'} · 최악 12개월 {st.month.worst12m ? `${pct(st.month.worst12m.r)} (~${st.month.worst12m.d.slice(0, 7)})` : '자료 부족'}</p> : null}
+      {st.month ? <p className="mut detail-only">원화 기준 최악 월간 수익률 {st.month.worstMonth ? `${pct(st.month.worstMonth.r)} (${st.month.worstMonth.d.slice(0, 7)})` : '자료 부족'} · 최악 12개월 {st.month.worst12m ? `${pct(st.month.worst12m.r)} (~${st.month.worst12m.d.slice(0, 7)})` : '자료 부족'}</p> : null}
       <p className="mut">과거 최대낙폭이 미래에 가능한 최대 손실 한도를 뜻하지는 않습니다. 적립식 계좌 기준 원금 미달·회복은 <Link href="/simulator/">시뮬레이터</Link>에서 계산하세요.</p>
       <h2>분배금</h2>
       {p.div_status === 'none' ? <p>데이터상 분배 기록이 없습니다.</p> : (
         <>
           <p>데이터상 분배 {p.divCount}건. 정합성 검사: {p.div_status === 'ok' ? '가격 변동과 일치(통과)' : <Tag kind="bad">불일치 검토 필요 — 총수익률 숨김</Tag>}</p>
-          <Table head={['배당락일', `주당 분배금(${p.currency})`, '당시 분배율(전일 종가 대비)']} rows={divs.map(([d, a]) => { const i = ser.d.indexOf(d); const pc = i > 0 ? ser.c[i - 1] : null; return [d, String(a), pc ? pct(a / pc, 2) : '자료 부족']; })} caption="최근 8건" />
+          <div className="detail-only"><Table head={['배당락일', `주당 분배금(${p.currency})`, '당시 분배율(전일 종가 대비)']} rows={divs.map(([d, a]) => { const i = ser.d.indexOf(d); const pc = i > 0 ? ser.c[i - 1] : null; return [d, String(a), pc ? pct(a / pc, 2) : '자료 부족']; })} caption="최근 8건" /></div>
+          <p className="mut easy-only">최근 분배: {divs[0] ? `${divs[0][0]} · 주당 ${divs[0][1]} ${p.currency}` : '-'} (전체 내역은 상세하게 보기)</p>
           <p className="mut">분배금은 세전이며 원천징수·과세는 반영하지 않았습니다. 실제 지급일은 데이터가 없어 배당락일 기준으로 처리합니다.</p>
         </>
       )}
       <h2>상품 정보 (운용사 공식 자료)</h2>
       <FactTable k={k} />
+      {roll.length ? (<>
+        <h2>과거에 이 ETF로 적립했다면? <span className="mut" style={{ fontSize: 14 }}>(롤링 결과)</span></h2>
+        <p className="mut">월 100만원 · 분배금 재투자 · 원화 기준 · 세전. 가능한 모든 시작월마다 N년 적립한 실제 과거 결과의 분포입니다. 예측이 아닙니다.</p>
+        <Table head={['적립 기간', '표본(시작월 수)', '중앙값 수익률', '최악 시작', '최고 시작', '종료 시 원금 미달이었던 비율', '적립 중 최악 손실(중앙값)']} detail={[1, 6]} rows={roll.map((w) => [`${w.years}년`, `${w.n}개`, pct(w.ret.median), `${pct(w.ret.min)} (${w.worstStart.d.slice(0, 7)})`, `${pct(w.ret.max)} (${w.bestStart.d.slice(0, 7)})`, pct(w.endBelow, 0), pct(w.worstLoss.median)])} caption="납입금 대비 수익률 분포" />
+        <p className="mut">표본은 서로 겹치는 기간이라 독립적인 관측이 아닙니다. 자세한 설명은 <Link href="/rolling/">과거 롤링 결과</Link>.</p>
+      </>) : null}
+      <div className="detail-only">
       <h2>데이터 출처와 검증</h2>
       <p>가격: {p.xcheck.price_primary}, 대조: {p.xcheck.price_secondary} (겹치는 {p.xcheck.overlap_days.toLocaleString('ko-KR')}일 중 불일치 {p.xcheck.mismatch_days}일{p.excluded_days?.length ? `, 제외한 날 ${p.excluded_days.join(', ')}` : ''}). 환율: ECB 일일 참조환율. 자세한 내용은 <Link href="/sources/">출처·검증</Link>을 참고하세요.</p>
       {p.trimmed_before ? <p className="warn">공식 설정일({p.trimmed_before}) 이전 구간은 현재 ETF 구조와 달라 제외했습니다.</p> : null}
+      </div>
       <h2>자주 묻는 질문</h2>
       {faq.map((x) => (<details key={x.q}><summary>{x.q}</summary><p>{x.a}</p></details>))}
       <h2>같은 유형 상품</h2>

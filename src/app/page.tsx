@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { pageMeta } from '@/lib/seo';
 import { SITE_NAME, DESCRIPTION, abs } from '@/lib/site';
-import { CONCEPTS } from '@/lib/concepts';
+import { CONCEPTS, LEARN } from '@/lib/concepts';
 import { CATS } from '@/lib/catalog';
 import JsonLd from '@/components/JsonLd';
 import Disclaimer from '@/components/Disclaimer';
@@ -16,6 +16,16 @@ export default function Home() {
       <h1>적립식 투자, 나에게 맞을까?</h1>
       <p className="lead">어떤 ETF가 ‘정답’인지 말하지 않습니다. 같은 금액으로도 상품·시점·환율·분배금에 따라 결과가 어떻게 달랐는지 검증 가능한 과거 데이터로 보여줍니다.</p>
       <Disclaimer />
+      <section aria-labelledby="start" className="card" style={{ borderColor: '#2b5c93' }}>
+        <h2 id="start" style={{ marginTop: 0 }}>처음이라면 이 순서로 보세요</h2>
+        <p className="easy-only">투자 지식이 전혀 없어도 괜찮아요. 아래 순서대로 <b>하루 5~10분씩</b> 읽으면 이 사이트의 숫자를 이해할 수 있어요. 각 단계는 쉬운 설명(간단하게 보기)과 자세한 설명(상세하게 보기)이 따로 있어요.</p>
+        <p className="detail-only">개념 → 지표 해석 → 직접 계산의 순서입니다. 각 개념 글은 정의·공식·한계·실제 데이터 예시를 포함합니다.</p>
+        <ol className="steps">{LEARN.map((l) => (<li key={l.slug}><Link href={`/concepts/${l.slug}/`}><b>{l.step}</b></Link> <span className="mut">· {l.min}분</span><div className="easy-only mut">{l.easy}</div><div className="detail-only mut">{l.detail}</div></li>))}
+          <li><Link href="/rolling/"><b>직접 확인: 최악일 때는 어땠나</b></Link> <span className="mut">· 5분</span><div className="mut">같은 ETF도 시작 시점에 따라 결과가 크게 달랐어요. 최악의 경우를 꼭 보세요.</div></li>
+          <li><Link href="/simulator/"><b>직접 해보기: 시뮬레이터 → 가정 계산기</b></Link> <span className="mut">· 10분</span><div className="mut">과거 실제 데이터로, 그다음 내가 가정한 수익률로 계산해 보세요.</div></li></ol>
+        <p style={{ marginBottom: 0 }}><Link className="btn" href="/concepts/dca/">1단계 시작하기 →</Link> <Link className="btn sec" href="/guide/">사이트 사용법</Link></p>
+      </section>
+      <div className="banner" style={{ marginTop: 14 }}><b>이 사이트는 좋을 때만 보여주지 않습니다.</b> 모든 결과에 최대낙폭, 원금 미달 기간, 가장 운이 나빴던 시작 시점의 결과를 함께 표시합니다. <Link href="/rolling/">최악 사례 보기</Link></div>
       <div className="grid g3">
         <div className="card"><h3 className="good">좋은 점</h3>한 번에 매수할 시점을 정해야 하는 부담을 줄이고, 정기적으로 투자하기 쉽습니다. 하락 시 같은 금액으로 더 많은 수량을 사게 됩니다.</div>
         <div className="card"><h3 className="warn">주의할 점</h3>시장이 장기간 하락하면 계속 투자해도 손실이 날 수 있습니다. 원금·수익이 보장되지 않으며 상승장에서는 일시금보다 불리할 수도 있습니다.</div>
@@ -23,6 +33,8 @@ export default function Home() {
       </div>
       <h2>이 사이트로 할 수 있는 것</h2>
       <div className="grid g4">
+        <Link className="card stretch" href="/calculator/"><h3>가정 계산기</h3><span className="mut">월 적립·목표 역산, −20%까지 손실 가정 포함</span></Link>
+        <Link className="card stretch" href="/rolling/"><h3>과거 롤링 결과</h3><span className="mut">시작 시점별 최악·중앙·최고, 종료 시 원금 미달 비율</span></Link>
         <Link className="card stretch" href="/simulator/"><h3>시뮬레이터</h3><span className="mut">ETF 최대 3종 월 적립 과거 결과, 일시금 비교, 원금 미달·회복</span></Link>
         <Link className="card stretch" href="/compare/"><h3>유형별 비교</h3><span className="mut">미국·국내 상장 ETF 41종을 10개 유형으로 같은 기간 비교</span></Link>
         <Link className="card stretch" href="/concepts/"><h3>핵심 개념 10</h3><span className="mut">XIRR, 최대낙폭, 환율, 환헤지, 총보수, 세금까지</span></Link>

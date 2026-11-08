@@ -25,13 +25,16 @@ export function factRows(k: string): [string, React.ReactNode][] {
     ['데이터 기준일', p.last],
   ];
 }
+const COMPACT = ['운용사', '추종지수', '환헤지/환노출', '분배 정책', '총보수'];
 export default function FactTable({ k }: { k: string }) {
   const rows = factRows(k); const f = FACT(k);
   return (
     <>
-      <Table head={['항목', '내용']} rows={rows.map(([a, b]) => [a, b])} caption="공식 자료 기준 상품 정보" />
-      <p className="mut">공식 출처: {f.sources?.length ? f.sources.slice(0, 3).map((u, i) => <span key={u}>{i ? ' · ' : ''}<a href={u} rel="noopener nofollow" target="_blank">{u.replace(/^https?:\/\//, '').slice(0, 52)}</a></span>) : '확인 대기'}</p>
-      {f.notes ? <details><summary>조사 메모</summary><p className="mut">{String(f.notes).replace(/\bnull\b/g, '확인 못함')}</p></details> : null}
+      <div className="easy-only"><Table head={['항목', '내용']} rows={rows.filter(([a]) => COMPACT.includes(a)).map(([a, b]) => [a, b])} caption="핵심 상품 정보 (상세하게 보기에서 전체 항목)" /></div>
+      <div className="detail-only"><Table head={['항목', '내용']} rows={rows.map(([a, b]) => [a, b])} caption="공식 자료 기준 상품 정보" />
+      </div>
+      <p className="mut detail-only">공식 출처: {f.sources?.length ? f.sources.slice(0, 3).map((u, i) => <span key={u}>{i ? ' · ' : ''}<a href={u} rel="noopener nofollow" target="_blank">{u.replace(/^https?:\/\//, '').slice(0, 52)}</a></span>) : '확인 대기'}</p>
+      {f.notes ? <details className="detail-only"><summary>조사 메모</summary><p className="mut">{String(f.notes).replace(/\bnull\b/g, '확인 못함')}</p></details> : null}
     </>
   );
 }

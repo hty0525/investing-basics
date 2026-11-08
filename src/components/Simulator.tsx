@@ -1,6 +1,8 @@
 'use client';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import Engine from '@/lib/engine.js';
+import { useMode } from './ModeToggle';
+import MoneyInput from './MoneyInput';
 
 export type SimProduct = { key: string; label: string; cat: string; currency: 'USD' | 'KRW'; first: string; last: string; kind: 'US' | 'KR'; review: boolean };
 type Slot = { k: string; w: number };
@@ -26,7 +28,7 @@ function LineChart({ x, lines }: { x: string[]; lines: { y: (number | null)[]; c
 
 export default function Simulator({ products }: { products: SimProduct[] }) {
   const byKey = useMemo(() => Object.fromEntries(products.map((p) => [p.key, p])), [products]);
-  const [mode, setMode] = useState<'easy' | 'detail'>('easy');
+  const mode = useMode();
   const [slots, setSlots] = useState<Slot[]>([{ k: 'VOO', w: 100 }, { k: '', w: 0 }, { k: '', w: 0 }]);
   const [monthly, setMonthly] = useState(1000000), [lump, setLump] = useState(0);
   const [reinvest, setReinvest] = useState('1'), [fee, setFee] = useState(0), [spread, setSpread] = useState(0);
@@ -79,7 +81,7 @@ export default function Simulator({ products }: { products: SimProduct[] }) {
 
   return (
     <div>
-      <div className="seg" role="group" aria-label="모드"><button className={mode === 'easy' ? 'on' : ''} onClick={() => setMode('easy')}>간편</button><button className={mode === 'detail' ? 'on' : ''} onClick={() => setMode('detail')}>상세</button></div>
+      <p className="hint">위쪽의 <b>간단하게 보기 / 상세하게 보기</b>를 바꾸면 결과 화면의 깊이가 달라집니다. 같은 데이터·같은 계산입니다.</p>
       <div className="card" style={{ marginTop: 12 }}>
         <div className="grid g2">
           <div>
@@ -95,8 +97,8 @@ export default function Simulator({ products }: { products: SimProduct[] }) {
             <div className="mut">{wsum !== 100 ? <span className="bad">비중 합계 {wsum}% (100%여야 함) </span> : null}{chosen.length ? `선택 상품 공통 최초일: ${defStart}` : ''}{chosen.some((x) => byKey[x.k].review) ? ' · 분배금 불일치 검토 상품 포함' : ''}</div>
           </div>
           <div className="grid g2" style={{ alignContent: 'start' }}>
-            <div><label>월 투자금 (원)</label><input type="number" value={monthly} step={100000} min={0} onChange={(e) => setMonthly(+e.target.value)} /></div>
-            <div><label>최초 일시금 (원, 선택)</label><input type="number" value={lump} step={1000000} min={0} onChange={(e) => setLump(+e.target.value)} /></div>
+            <div><label>월 투자금 (원)</label><MoneyInput value={monthly} onChange={setMonthly} label="월 투자금" /></div>
+            <div><label>최초 일시금 (원, 선택)</label><MoneyInput value={lump} onChange={setLump} label="최초 일시금" /></div>
             <div><label>시작일</label><input type="date" value={start} onChange={(e) => setStart(e.target.value)} /></div>
             <div><label>종료일</label><input type="date" value={end} onChange={(e) => setEnd(e.target.value)} /></div>
             <div><label>분배금 처리</label><select value={reinvest} onChange={(e) => setReinvest(e.target.value)}><option value="1">재투자 (배당락일 종가)</option><option value="0">현금 보유 (이자 없음)</option></select></div>
@@ -120,7 +122,7 @@ export default function Simulator({ products }: { products: SimProduct[] }) {
         {!det ? (
           <div className="card" style={{ marginTop: 14, borderColor: '#2b5c93' }}><b>한 줄 요약</b>
             <div style={{ fontSize: 17, marginTop: 4 }}>{won(s.principal)}을 넣어 {won(s.value)}이 됐고({s.profit >= 0 ? '+' : ''}{won(s.profit)}), 가장 힘들었을 때는 넣은 돈보다 {won(Math.abs(s.worstLossAmt))}({pct(Math.abs(s.worstLossPct))}) 적었습니다{s.worstLossAmt ? ` (${s.worstLossAmtDate})` : ''}.</div>
-            <div className="mut">과거 데이터 기준 · 세전 · 미래를 보장하지 않습니다. 더 자세한 숫자는 “상세” 모드에서 볼 수 있습니다.</div></div>
+            <div className="mut">과거 데이터 기준 · 세전 · 미래를 보장하지 않습니다. 더 자세한 숫자는 “상세하게 보기”에서 볼 수 있습니다.</div></div>
         ) : null}
         <div className="card" style={{ marginTop: 14 }}>
           <span className="tag hist">과거 데이터 기반 계산</span><span className="tag">세전</span><span className="tag">분배금 {res.o.reinvest ? '재투자' : '현금보유'}</span><span className="tag">{s.start} ~ {s.end}</span>

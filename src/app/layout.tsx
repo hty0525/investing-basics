@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import MobileNav from '@/components/MobileNav';
 import { SITE_NAME, SITE_ORIGIN, DESCRIPTION, abs, BASE_PATH } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -21,12 +22,14 @@ export const viewport: Viewport = { width: 'device-width', initialScale: 1, them
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ko">
+    <html lang="ko" data-mode="easy" suppressHydrationWarning>
+      <head><script dangerouslySetInnerHTML={{ __html: "try{var m=localStorage.getItem('ib-mode');if(m==='detail')document.documentElement.dataset.mode='detail'}catch(e){}" }} /></head>
       <body>
         <a href="#main" className="sr">본문으로 건너뛰기</a>
         <Header />
         <main id="main">{children}</main>
         <Footer />
+        <MobileNav />
       </body>
     </html>
   );
