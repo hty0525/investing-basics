@@ -20,10 +20,11 @@ export default function Page() {
       <p className="lead">투자 지식이 없어도 괜찮습니다. 아래 순서대로 보면 이 사이트의 숫자를 읽을 수 있습니다.</p>
       <Disclaimer />
       <h2>0. 먼저: 보기 방식 고르기</h2>
-      <p>화면 위쪽(모바일은 맨 위 줄)의 <b>간단하게 보기 / 상세하게 보기</b>를 눌러 바꿉니다. 같은 데이터이고 설명의 깊이만 달라지며 선택은 이 브라우저에 저장됩니다.</p>
-      <div className="grid g2">
-        <div className="card"><h3>간단하게 보기</h3><ul><li>쉬운 말 설명, 핵심 숫자 몇 개</li><li>“한 줄 요약” 문장</li><li>처음 보는 사람에게 추천</li></ul></div>
-        <div className="card"><h3>상세하게 보기</h3><ul><li>정의·공식·한계·출처까지 전체 설명</li><li>XIRR, 변동성, 거래 내역, 검증 상태</li><li>계산 근거를 확인하고 싶은 사람에게</li></ul></div>
+      <p>화면 위쪽(모바일은 맨 위 줄)의 <b>그림으로 / 간단히 / 상세히</b> 버튼으로 바꿉니다. 같은 데이터이고 표현의 깊이만 달라지며 선택은 이 브라우저에 저장됩니다. 처음에는 <b>그림으로</b>가 기본이에요.</p>
+      <div className="grid g3">
+        <div className="card"><h3>그림으로</h3><ul><li>한 장에 하나씩, 오른쪽으로 넘기는 카드</li><li>그래프와 한 줄 설명, 최악 수치는 빨간색</li><li>글이 많은 게 싫은 분께 추천</li></ul></div>
+        <div className="card"><h3>간단히</h3><ul><li>쉬운 말 설명, 핵심 숫자 몇 개</li><li>“한 줄 요약” 문장</li><li>처음 보는 사람에게 추천</li></ul></div>
+        <div className="card"><h3>상세히</h3><ul><li>정의·공식·한계·출처까지 전체 설명</li><li>XIRR, 변동성, 거래 내역, 검증 상태</li><li>계산 근거를 확인하고 싶은 사람에게</li></ul></div>
       </div>
       <h2>1. 개념을 이 순서로 익히세요</h2>
       <ol className="steps">{LEARN.map((l) => (<li key={l.slug}><Link href={`/concepts/${l.slug}/`}><b>{l.step}</b></Link> <span className="mut">· {l.min}분</span><div className="easy-only mut">{l.easy}</div><div className="detail-only mut">{l.detail}</div></li>))}</ol>

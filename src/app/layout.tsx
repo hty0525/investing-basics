@@ -23,7 +23,7 @@ export const viewport: Viewport = { width: 'device-width', initialScale: 1, them
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko" data-mode="easy" suppressHydrationWarning>
-      <head><script dangerouslySetInnerHTML={{ __html: "try{var m=localStorage.getItem('ib-mode');if(m==='detail')document.documentElement.dataset.mode='detail'}catch(e){}" }} /></head>
+      <head><script dangerouslySetInnerHTML={{ __html: "try{var m=localStorage.getItem('ib-mode');document.documentElement.dataset.mode=(m==='easy'||m==='detail'||m==='visual')?m:'visual'}catch(e){}" }} /></head>
       <body>
         <a href="#main" className="sr">본문으로 건너뛰기</a>
         <Header />
