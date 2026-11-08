@@ -6,7 +6,9 @@
 - 사이트: https://hty0525.github.io/investing-basics/
 - Next.js(App Router) **정적 export(SSG)** → 서버 런타임 없음, GitHub Pages 무료 호스팅
 - 그림으로(카드)/간단히/상세히 보기 전환(전역), 학습 경로, 가정 계산기, 과거 롤링 결과(최악 포함), 모바일 대응(하단 메뉴)
-- SEO: 페이지별 title/description/canonical/OG, `sitemap.xml`, `robots.txt`, JSON-LD(Article·FAQPage·BreadcrumbList·WebSite·WebApplication·DefinedTermSet), 상품 41 + 비교 10 + 개념 10 정적 페이지
+- ETF 상세 가격 차트: 과거 가격 추이 + 마우스/터치/방향키로 날짜별 실제 종가 확인
+- SEO: 페이지별 title/description/canonical/OG, 수정일을 구분한 `sitemap.xml`, JSON-LD(Article·BreadcrumbList·WebSite·WebApplication 등), 상품 41 + 비교 10 + 개념 10 정적 페이지
+- **검색엔진 등록/robots.txt 유의사항 및 실측 체크리스트**: [SEO 운영 문서](docs/SEO_OPERATIONS.md) (GitHub Pages 하위 경로의 robots.txt는 호스트 루트 robots.txt를 대체하지 못함)
 
 ## 구조
 ```
@@ -22,6 +24,7 @@ pipeline         데이터 수집·검증·병합 스크립트, 팩트시트 조
 npm install
 npm run dev            # http://localhost:3000
 npm run build          # out/ 에 정적 사이트 생성 (basePath=/investing-basics)
+npm run seo:check      # 생성 HTML의 메타태그/Canonical/내부 링크/Sitemap 자동 검사
 npm run test:engine    # JS 엔진 vs 독립 Python 재계산 대조
 ```
 
