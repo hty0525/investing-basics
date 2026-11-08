@@ -93,3 +93,20 @@ details summary{cursor:pointer;color:var(--ac)}
 .chips button{background:var(--card2);border:1px solid var(--line);color:var(--mut);padding:5px 12px;border-radius:99px;font:inherit;font-size:13px;cursor:pointer}
 .chips button.on,.chips button:hover{background:var(--ac);color:#06101f;border-color:var(--ac)}
 .chips button:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+
+/* ETF historical price chart */
+.price-chart{margin:10px 0 18px}
+.price-chart-periods{display:flex;flex-wrap:wrap;gap:5px;margin:0 0 12px}
+.price-chart-periods button{border:1px solid var(--line);color:var(--mut);background:var(--card2);border-radius:8px;padding:6px 10px;font:inherit;font-size:13px;cursor:pointer}
+.price-chart-periods button.on{border-color:var(--ac);background:var(--ac);color:#06101f;font-weight:700}
+.price-chart-periods button:disabled{opacity:.55;cursor:wait}
+.price-chart-periods button:focus-visible{outline:2px solid var(--ac);outline-offset:3px}
+.price-chart-summary{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border:1px solid var(--line);background:var(--card);border-radius:12px;padding:12px 15px;margin-bottom:8px}
+.price-chart-summary>div{display:flex;flex-direction:column;gap:1px}
+.price-chart-summary strong{font-size:22px;line-height:1.35;font-variant-numeric:tabular-nums}
+.price-chart-summary strong small{font-size:13px;color:var(--mut);font-weight:500}
+.price-chart-summary .mut{font-size:12px}
+.price-chart-svg{width:100%;height:280px;display:block;background:var(--card2);border-radius:12px;cursor:crosshair;touch-action:pan-y;outline-offset:3px}
+.price-chart-svg:focus-visible{outline:2px solid var(--ac)}
+.price-chart-caption{color:var(--mut);font-size:12px;line-height:1.65;margin-top:8px}
+@media(max-width:720px){.price-chart-summary strong{font-size:18px}.price-chart-svg{height:230px}.price-chart-periods{gap:4px}.price-chart-periods button{padding:7px 9px;font-size:12px}}
